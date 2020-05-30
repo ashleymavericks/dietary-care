@@ -1,283 +1,275 @@
 /* eslint-disable  func-names */
 /* eslint-disable  no-console */
 
-const Alexa = require('ask-sdk');
-
-
-
-/*const GetJokeHandler1 = {
-  canHandle(handlerInput) {
-   //const request = handlerInput.requestEnvelope.request;
-    //return request.type === 'IntentRequest'
-      //&& request.intent.name === 'GetJokeIntent';
-        const request = handlerInput.requestEnvelope.request;
-        return request.type === 'LaunchRequest'
-      ||  (request.type === 'IntentRequest'
-        && request.intent.name === 'GetJokeHandler')
-    
-     
-  },
-  
-  
-  async handle(handlerInput) {
-    const response = await httpGet();
-    
-    console.log(response);
-
-    return handlerInput.responseBuilder
-            .speak("Okay. Here is what I got back from my request. for you anurag " + response.value.joke)
-            .reprompt("What would you like?")
-            .getResponse();
-  },
-};*/
-
-var Request = require('request');
-
-const GetJokeHandler1 = {
-    canHandle(handlerInput) {
-     //const request = handlerInput.requestEnvelope.request;
-      //return request.type === 'IntentRequest'
-        //&& request.intent.name === 'GetJokeIntent';
-          const request = handlerInput.requestEnvelope.request;
-          return request.type === 'LaunchRequest'
-        ||  (request.type === 'IntentRequest'
-          && request.intent.name === 'GetJokeHandler')
-      
-       
-    },
-    
-
-
-    async handle(handlerInput) {
-      const res = await getDetails(); 
-      
-        if(res.status === 200)
-        {
-            const ingredients = res.product[0].ingredients;
-            
-            var flag = false;
-
-            const usersAllergy = ['nuts', 'milk']; //this will come from NoSQL DB in array form
-
-             ingredients.forEach(e_1 => {
-                usersAllergy.forEach(e_2 => {
-                    if(e_1 === e_2)
-                    {
-                        flag = true;
-                        return;
-                    }
-                });
-            });
-            
-            // ingredients.every(function(e_1, index) {
-            //     usersAllergy.every(function(e_2, index) {
-            //         if(e_1 === e_2)
-            //         {
-            //             flag = true;
-            //             return ;
-            //         }
-            //     });
-            // });
-            console.log(flag)
-
-            if(flag)
-            {
-                const speakOutput = "You cannot have this product"; //tell user that he can or cannot have the product
-                return handlerInput.responseBuilder
-                        .speak(speakOutput)
-                        .reprompt("Abc")
-                        .getResponse();
-            }
-            else
-            {
-                const speakOutput = "You can have this product"; //tell user that he can or cannot have the product
-                return handlerInput.responseBuilder
-                        .speak(speakOutput)
-                        .reprompt("abc")
-                        .getResponse();
-            }
-        }
-        else
-        {
-            console.log(res.message); //or 'res.message' can be given to .speak() directly
-        }
-
-    //   console.log(response);
-  
-    //   return handlerInput.responseBuilder
-    //           .speak("Okay. Here is what I got back from my request, for you anurag " + response.value.joke)
-    //           .reprompt("What would you like?")
-    //           .getResponse();
-    },
-  };
-
-  
-  
-  function getDetails() {
-    return new Promise(((resolve, reject) => {
-    //   var options = {
-    //       host: 'https://dietary-care.herokuapp.com/',
-    //       port: 22436,
-    //       path: '/jokes/random',
-    //       method: 'GET',
-    //   };
-      
-    //   const request = https.request(options, (response) => {
-    //     response.setEncoding('utf8');
-    //     let returnData = '';
-  
-    //     response.on('data', (chunk) => {
-    //       returnData += chunk;
-    //     });
-  
-    //     response.on('end', () => {
-    //       resolve(JSON.parse(returnData));
-    //     });
-  
-    //     response.on('error', (error) => {
-    //       reject(error);
-    //     });
-    //   });
-    //   request.end();
-
-   const product = 'britania cake'; //this should be captured from the user's query
-
-    Request.get(`https://dietary-care.herokuapp.com/${product}`, function(err, res, body)
-    {
-        if(err)
-        {
-            reject(err);
-        }
-
-        const data = JSON.parse(body);
-        resolve(data);
-    });
-    }));
-  }
-   
-
-/*const HelloMe1 = {
-  canHandle(handlerInput) {
-   
-        const request = handlerInput.requestEnvelope.request;
-    return (request.type === 'IntentRequest'
-        && request.intent.name === 'HelloMe')
-  },  
-        handle(handlerInput) {
-    const factArr = data;
-    const factIndex = Math.floor(Math.random() * factArr.length);
-    const randomFact = factArr[factIndex];
-    const speechOutput = GET_FACT_MESSAGE + randomFact;
-
-    return handlerInput.responseBuilder
-      .speak(speechOutput)
-      .withSimpleCard(SKILL_NAME, randomFact)
-      .getResponse();
-    
-     
-  },
+const Alexa = require('ask-sdk-core');
+const APP_NAME = 'Template Seven';
+const messages = {
+	NOTIFY_MISSING_PERMISSIONS:
+		'Please enable profile permissions in the Amazon Alexa app.',
+	ERROR: 'Uh Oh. Looks like something went wrong.',
 };
 
-*/
+const FULL_NAME_PERMISSION = 'alexa::profile:name:read';
+const EMAIL_PERMISSION = 'alexa::profile:email:read';
+const MOBILE_PERMISSION = 'alexa::profile:mobile_number:read';
 
-
-/*const GetNewFactHandler = {
-  canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'LaunchRequest'
-      || (request.type === 'IntentRequest'
-        && request.intent.name === 'GetNewFactIntent');
-  },
-  handle(handlerInput) {
-    const factArr = data;
-    const factIndex = Math.floor(Math.random() * factArr.length);
-    const randomFact = factArr[factIndex];
-    const speechOutput = GET_FACT_MESSAGE + randomFact;
-
-    return handlerInput.responseBuilder
-      .speak(speechOutput)
-      .withSimpleCard(SKILL_NAME, randomFact)
-      .getResponse();
-  },
-};*/
-
-const HelpHandler = {
-  canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'IntentRequest'
-      && request.intent.name === 'AMAZON.HelpIntent';
-  },
-  handle(handlerInput) {
-    return handlerInput.responseBuilder
-      .speak(HELP_MESSAGE)
-      .reprompt(HELP_REPROMPT)
-      .getResponse();
-  },
+const LaunchRequestHandler = {
+	canHandle(handlerInput) {
+		const request = handlerInput.requestEnvelope.request;
+		return request.type === 'LaunchRequest';
+	},
+	async handle(handlerInput) {
+		const { serviceClientFactory, responseBuilder } = handlerInput;
+		try {
+			const upsServiceClient = serviceClientFactory.getUpsServiceClient();
+			const profileName = await upsServiceClient.getProfileName();
+			const speechResponse = `Hello, ${profileName} , Welcome to Dietary Care. How are you feeling today?`;
+			return responseBuilder
+				.speak(speechResponse)
+				.withSimpleCard(APP_NAME, speechResponse)
+				.getResponse();
+		} catch (error) {
+			console.log(JSON.stringify(error));
+			if (error.statusCode === 403) {
+				return responseBuilder
+					.speak(messages.NOTIFY_MISSING_PERMISSIONS)
+					.withAskForPermissionsConsentCard([FULL_NAME_PERMISSION])
+					.getResponse();
+			}
+			console.log(JSON.stringify(error));
+			const response = responseBuilder.speak(messages.ERROR).getResponse();
+			return response;
+		}
+	},
 };
 
-const ExitHandler = {
-  canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'IntentRequest'
-      && (request.intent.name === 'AMAZON.CancelIntent'
-        || request.intent.name === 'AMAZON.StopIntent');
-  },
-  handle(handlerInput) {
-    return handlerInput.responseBuilder
-      .speak(STOP_MESSAGE)
-      .getResponse();
-  },
+const GreetMeIntentHandler = {
+	canHandle(handlerInput) {
+		return (
+			handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+			handlerInput.requestEnvelope.request.intent.name === 'GreetMeIntent'
+		);
+	},
+	async handle(handlerInput) {
+		const { serviceClientFactory, responseBuilder } = handlerInput;
+		try {
+			const upsServiceClient = serviceClientFactory.getUpsServiceClient();
+			const profileName = await upsServiceClient.getProfileName();
+			const speechResponse = `Glad to hear about it. Please tell me about your allergen.`;
+			return responseBuilder
+				.speak(speechResponse)
+				.withSimpleCard(APP_NAME, speechResponse)
+				.getResponse();
+		} catch (error) {
+			console.log(JSON.stringify(error));
+			if (error.statusCode === 403) {
+				return responseBuilder
+					.speak(messages.NOTIFY_MISSING_PERMISSIONS)
+					.withAskForPermissionsConsentCard([FULL_NAME_PERMISSION])
+					.getResponse();
+			}
+			console.log(JSON.stringify(error));
+			const response = responseBuilder.speak(messages.ERROR).getResponse();
+			return response;
+		}
+	},
+};
+
+const MyAllergenIsIntentHandler = {
+	canHandle(handlerInput) {
+		return (
+			handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+			handlerInput.requestEnvelope.request.intent.name === 'MyAllergenIsIntent'
+		);
+	},
+	async handle(handlerInput) {
+		const allergenValue =
+			handlerInput.requestEnvelope.request.intent.slots.name.value;
+		let speechText = `Sure, I will remember that you are allergic to ${allergenValue}. Go ahead and tell me about the manufacturer and procuct name you want to check for allergies`;
+
+		const attributesManager = handlerInput.attributesManager;
+		const responseBuilder = handlerInput.responseBuilder;
+
+		const attributes = (await attributesManager.getSessionAttributes()) || {};
+		attributes.allergenValue = allergenValue;
+		attributesManager.setSessionAttributes(attributes);
+
+		return responseBuilder
+			.speak(speechText)
+			.reprompt(
+				`Tell me about the manufacturer and product name you want to check for allergies`
+			)
+			.getResponse();
+	},
+};
+
+// const EmailIntentHandler = {
+//   canHandle(handlerInput) {
+//     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+//       && handlerInput.requestEnvelope.request.intent.name === 'EmailIntent';
+//   },
+//   async handle(handlerInput) {
+//     const { serviceClientFactory, responseBuilder } = handlerInput;
+//     try {
+//       const upsServiceClient = serviceClientFactory.getUpsServiceClient();
+//       const profileEmail = await upsServiceClient.getProfileEmail();
+//       if (!profileEmail) {
+//         const noEmailResponse = `It looks like you don't have an email set. You can set your email from the companion app.`
+//         return responseBuilder
+//                       .speak(noEmailResponse)
+//                       .withSimpleCard(APP_NAME, noEmailResponse)
+//                       .getResponse();
+//       }
+//       const speechResponse = `Your email is, ${profileEmail}`;
+//       return responseBuilder
+//                       .speak(speechResponse)
+//                       .withSimpleCard(APP_NAME, speechResponse)
+//                       .getResponse();
+//     } catch (error) {
+//       console.log(JSON.stringify(error));
+//       if (error.statusCode === 403) {
+//         return responseBuilder
+//         .speak(messages.NOTIFY_MISSING_PERMISSIONS)
+//         .withAskForPermissionsConsentCard([EMAIL_PERMISSION])
+//         .getResponse();
+//       }
+//       console.log(JSON.stringify(error));
+//       const response = responseBuilder.speak(messages.ERROR).getResponse();
+//       return response;
+//     }
+//   },
+// }
+
+// const MobileIntentHandler = {
+//   canHandle(handlerInput) {
+//     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+//       && handlerInput.requestEnvelope.request.intent.name === 'MobileIntent';
+//   },
+//   async handle(handlerInput) {
+//     const { serviceClientFactory, responseBuilder } = handlerInput;
+//     try {
+//       const upsServiceClient = serviceClientFactory.getUpsServiceClient();
+//       const profileMobileObject = await upsServiceClient.getProfileMobileNumber();
+//       if (!profileMobileObject) {
+//         const errorResponse = `It looks like you don't have a mobile number set. You can set your mobile number from the companion app.`
+//         return responseBuilder
+//                       .speak(errorResponse)
+//                       .withSimpleCard(APP_NAME, errorResponse)
+//                       .getResponse();
+//       }
+//       const profileMobile = profileMobileObject.phoneNumber;
+//       const speechResponse = `Your mobile number is, <say-as interpret-as="telephone">${profileMobile}</say-as>`;
+//       const cardResponse = `Your mobile number is, ${profileMobile}`
+//       return responseBuilder
+//                       .speak(speechResponse)
+//                       .withSimpleCard(APP_NAME, cardResponse)
+//                       .getResponse();
+//     } catch (error) {
+//       console.log(JSON.stringify(error));
+//       if (error.statusCode === 403) {
+//         return responseBuilder
+//         .speak(messages.NOTIFY_MISSING_PERMISSIONS)
+//         .withAskForPermissionsConsentCard([MOBILE_PERMISSION])
+//         .getResponse();
+//       }
+//       console.log(JSON.stringify(error));
+//       const response = responseBuilder.speak(messages.ERROR).getResponse();
+//       return response;
+//     }
+//   },
+// }
+
+const HelpIntentHandler = {
+	canHandle(handlerInput) {
+		return (
+			handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+			handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent'
+		);
+	},
+	handle(handlerInput) {
+		const speechText = 'You can say hello to me!';
+
+		return handlerInput.responseBuilder
+			.speak(speechText)
+			.reprompt(speechText)
+			.withSimpleCard('Hello World', speechText)
+			.getResponse();
+	},
+};
+
+const CancelAndStopIntentHandler = {
+	canHandle(handlerInput) {
+		return (
+			handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+			(handlerInput.requestEnvelope.request.intent.name ===
+				'AMAZON.CancelIntent' ||
+				handlerInput.requestEnvelope.request.intent.name ===
+					'AMAZON.StopIntent')
+		);
+	},
+	handle(handlerInput) {
+		const speechText = 'Goodbye!';
+
+		return handlerInput.responseBuilder.speak(speechText).getResponse();
+	},
 };
 
 const SessionEndedRequestHandler = {
-  canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'SessionEndedRequest';
-  },
-  handle(handlerInput) {
-    console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`);
+	canHandle(handlerInput) {
+		return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest';
+	},
+	handle(handlerInput) {
+		console.log(
+			`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`
+		);
 
-    return handlerInput.responseBuilder.getResponse();
-  },
+		return handlerInput.responseBuilder.getResponse();
+	},
 };
 
 const ErrorHandler = {
-  canHandle() {
-    return true;
-  },
-  handle(handlerInput, error) {
-    console.log(`Error handled: ${error.message}`);
+	canHandle() {
+		return true;
+	},
+	handle(handlerInput, error) {
+		console.log(`Error handled: ${error.message}`);
 
-    return handlerInput.responseBuilder
-      .speak('xxxx.')
-      .reprompt('Sorry, an error occurred.')
-      .getResponse();
-  },
+		return handlerInput.responseBuilder
+			.speak("Sorry, I can't understand the command. Please say again.")
+			.reprompt("Sorry, I can't understand the command. Please say again.")
+			.getResponse();
+	},
 };
 
-const SKILL_NAME = 'dietary care';
-const GET_FACT_MESSAGE = 'Here\'s your Training Question: ';
-const HELP_MESSAGE = 'You can say tell me a Training Question, or, you can say exit... What can I help you with?';
-const HELP_REPROMPT = 'What can I help you with?';
-const STOP_MESSAGE = 'Goodbye!';
+const RequestLog = {
+	process(handlerInput) {
+		console.log(
+			`REQUEST ENVELOPE = ${JSON.stringify(handlerInput.requestEnvelope)}`
+		);
+	},
+};
 
-const data = [
-  'Doha Bank has tied up with Reliance group to generate business opportunities in the Gulf Cooperation Council nations and India.',
-  'Arvind Panagriya has been appointed as the Sherpa for G-20 talks in place of Railway Minister Suresh Prabhu by union government.',
-];
+const ResponseLog = {
+	process(handlerInput) {
+		console.log(`RESPONSE BUILDER = ${JSON.stringify(handlerInput)}`);
+	},
+};
 
-const skillBuilder = Alexa.SkillBuilders.standard();
+const skillBuilder = Alexa.SkillBuilders.custom();
 
 exports.handler = skillBuilder
-  .addRequestHandlers(
-    //LaunchRequestHandler,
-   // HelloWorldIntentHandler,
-  // HelloMe1,
-    GetJokeHandler1,
-   // GetNewFactHandler,
-    HelpHandler,
-    ExitHandler,
-    SessionEndedRequestHandler
-  )
-  .addErrorHandlers(ErrorHandler)
-  .lambda();
+	.addRequestHandlers(
+		LaunchRequestHandler,
+		GreetMeIntentHandler,
+		MyAllergenIsIntentHandler,
+		// EmailIntentHandler,
+		// MobileIntentHandler,
+		HelpIntentHandler,
+		CancelAndStopIntentHandler,
+		SessionEndedRequestHandler
+	)
+	.addRequestInterceptors(RequestLog)
+	.addResponseInterceptors(ResponseLog)
+	.addErrorHandlers(ErrorHandler)
+	.withApiClient(new Alexa.DefaultApiClient())
+	.lambda();
