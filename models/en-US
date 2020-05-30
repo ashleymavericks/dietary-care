@@ -1,0 +1,109 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "dietary care",
+            "intents": [
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GreetMeIntent",
+                    "slots": [],
+                    "samples": [
+                        "good",
+                        "i am doing fine",
+                        "i am great",
+                        "fine",
+                        "great",
+                        "i am feeling goog today",
+                        "i am feeling fine today"
+                    ]
+                },
+                {
+                    "name": "EmailIntent",
+                    "slots": [],
+                    "samples": [
+                        "email",
+                        "what is my email",
+                        "what's my email address"
+                    ]
+                },
+                {
+                    "name": "MobileIntent",
+                    "slots": [],
+                    "samples": [
+                        "mobile",
+                        "phone",
+                        "mobile number",
+                        "what is my mobile number",
+                        "what is my phone number"
+                    ]
+                },
+                {
+                    "name": "MyAllergenIsIntent",
+                    "slots": [
+                        {
+                            "name": "allergen",
+                            "type": "allergen"
+                        }
+                    ],
+                    "samples": [
+                        "{allergen} is am allergic to",
+                        "{allergen}",
+                        "my allergen is {allergen}",
+                        "i am allergic to {allergen}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "allergen",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "meat",
+                                "synonyms": [
+                                    "pork",
+                                    "beef"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "milk products",
+                                "synonyms": [
+                                    "dairy products",
+                                    "whole milk",
+                                    "diary",
+                                    "butter",
+                                    "milk"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "wheat",
+                                "synonyms": [
+                                    "wheat flour"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
