@@ -50,30 +50,34 @@ const GreetMeIntentHandler = {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
       && handlerInput.requestEnvelope.request.intent.name === 'GreetMeIntent';
   },
-  async handle(handlerInput) {
-    const { serviceClientFactory, responseBuilder } = handlerInput;
-    try {
-      const upsServiceClient = serviceClientFactory.getUpsServiceClient();
-      const profileName = await upsServiceClient.getProfileName();
-      const speechResponse = `Glad to hear about it. Please tell me about your allergen.`;
-      return responseBuilder
-                      .speak(speechResponse)
-                      .withSimpleCard(APP_NAME, speechResponse)
-                      .getResponse();
-    } catch (error) {
-      console.log(JSON.stringify(error));
-      if (error.statusCode === 403) {
-        return responseBuilder
-        .speak(messages.NOTIFY_MISSING_PERMISSIONS)
-        .withAskForPermissionsConsentCard([FULL_NAME_PERMISSION])
-        .getResponse();
-      }
-      console.log(JSON.stringify(error));
-      const response = responseBuilder.speak(messages.ERROR).getResponse();
-      return response;
-    }
+  handle(handlerInput) {
+    const slots = handlerInput.requestEnvelope.request.intent.slots;
+    const speechText = `Glad to hear about it. Please tell me about your allergen?`
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt ('Please tell me about the ingredient to which you are allergic.')
+      .withSimpleCard('APP_NAME', speechText)
+      .getResponse();
   },
-}
+};
+
+const GreetMeNotIntentHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+      && handlerInput.requestEnvelope.request.intent.name === 'GreetMeNotIntent';
+  },
+  handle(handlerInput) {
+    const slots = handlerInput.requestEnvelope.request.intent.slots;
+    const speechText = `I am sorry to hear that. Though I can help you in selecting safer food products. Kindly tell me about your allergen`
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt ('Please tell me about the ingredient to which you are allergic.')
+      .withSimpleCard('APP_NAME', speechText)
+      .getResponse();
+  },
+};
 
 const MyAllergenIsIntentHandler = {
   canHandle(handlerInput) {
@@ -82,7 +86,8 @@ const MyAllergenIsIntentHandler = {
   },
   async handle(handlerInput) {
 
-    const allergenValue = handlerInput.requestEnvelope.request.intent.slots.name.value;
+    const slots = handlerInput.requestEnvelope.request.intent.slots;
+    const allergenValue = slots['allergen'].value;
     let speechText = `Sure, I will remember that you are allergic to ${allergenValue}. Go ahead and tell me about the manufacturer and procuct name you want to check for allergies`;
 
     const attributesManager = handlerInput.attributesManager;
@@ -99,82 +104,6 @@ const MyAllergenIsIntentHandler = {
   },
 };
 
-
-// const EmailIntentHandler = {
-//   canHandle(handlerInput) {
-//     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-//       && handlerInput.requestEnvelope.request.intent.name === 'EmailIntent';
-//   },
-//   async handle(handlerInput) {
-//     const { serviceClientFactory, responseBuilder } = handlerInput;
-//     try {
-//       const upsServiceClient = serviceClientFactory.getUpsServiceClient();
-//       const profileEmail = await upsServiceClient.getProfileEmail();
-//       if (!profileEmail) {
-//         const noEmailResponse = `It looks like you don't have an email set. You can set your email from the companion app.`
-//         return responseBuilder
-//                       .speak(noEmailResponse)
-//                       .withSimpleCard(APP_NAME, noEmailResponse)
-//                       .getResponse();
-//       }
-//       const speechResponse = `Your email is, ${profileEmail}`;
-//       return responseBuilder
-//                       .speak(speechResponse)
-//                       .withSimpleCard(APP_NAME, speechResponse)
-//                       .getResponse();
-//     } catch (error) {
-//       console.log(JSON.stringify(error));
-//       if (error.statusCode === 403) {
-//         return responseBuilder
-//         .speak(messages.NOTIFY_MISSING_PERMISSIONS)
-//         .withAskForPermissionsConsentCard([EMAIL_PERMISSION])
-//         .getResponse();
-//       }
-//       console.log(JSON.stringify(error));
-//       const response = responseBuilder.speak(messages.ERROR).getResponse();
-//       return response;
-//     }
-//   },
-// }
-
-// const MobileIntentHandler = {
-//   canHandle(handlerInput) {
-//     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-//       && handlerInput.requestEnvelope.request.intent.name === 'MobileIntent';
-//   },
-//   async handle(handlerInput) {
-//     const { serviceClientFactory, responseBuilder } = handlerInput;
-//     try {
-//       const upsServiceClient = serviceClientFactory.getUpsServiceClient();
-//       const profileMobileObject = await upsServiceClient.getProfileMobileNumber();
-//       if (!profileMobileObject) {
-//         const errorResponse = `It looks like you don't have a mobile number set. You can set your mobile number from the companion app.`
-//         return responseBuilder
-//                       .speak(errorResponse)
-//                       .withSimpleCard(APP_NAME, errorResponse)
-//                       .getResponse();
-//       }
-//       const profileMobile = profileMobileObject.phoneNumber;
-//       const speechResponse = `Your mobile number is, <say-as interpret-as="telephone">${profileMobile}</say-as>`;
-//       const cardResponse = `Your mobile number is, ${profileMobile}`
-//       return responseBuilder
-//                       .speak(speechResponse)
-//                       .withSimpleCard(APP_NAME, cardResponse)
-//                       .getResponse();
-//     } catch (error) {
-//       console.log(JSON.stringify(error));
-//       if (error.statusCode === 403) {
-//         return responseBuilder
-//         .speak(messages.NOTIFY_MISSING_PERMISSIONS)
-//         .withAskForPermissionsConsentCard([MOBILE_PERMISSION])
-//         .getResponse();
-//       }
-//       console.log(JSON.stringify(error));
-//       const response = responseBuilder.speak(messages.ERROR).getResponse();
-//       return response;
-//     }
-//   },
-// }
 
 const HelpIntentHandler = {
   canHandle(handlerInput) {
@@ -250,9 +179,8 @@ exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
     GreetMeIntentHandler,
+    GreetMeNotIntentHandler,
     MyAllergenIsIntentHandler,
-    // EmailIntentHandler,
-    // MobileIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
