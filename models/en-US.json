@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "dietary care",
+            "invocationName": "customer information",
             "intents": [
                 {
                     "name": "AMAZON.NavigateHomeIntent",
@@ -23,33 +23,18 @@
                     "name": "GreetMeIntent",
                     "slots": [],
                     "samples": [
+                        "i am doing okay",
+                        "i am feeling fine",
+                        "i am feeling great",
+                        "i am feeling good",
+                        "i am doing great",
                         "good",
                         "i am doing fine",
                         "i am great",
                         "fine",
                         "great",
-                        "i am feeling goog today",
+                        "i am feeling good today",
                         "i am feeling fine today"
-                    ]
-                },
-                {
-                    "name": "EmailIntent",
-                    "slots": [],
-                    "samples": [
-                        "email",
-                        "what is my email",
-                        "what's my email address"
-                    ]
-                },
-                {
-                    "name": "MobileIntent",
-                    "slots": [],
-                    "samples": [
-                        "mobile",
-                        "phone",
-                        "mobile number",
-                        "what is my mobile number",
-                        "what is my phone number"
                     ]
                 },
                 {
@@ -57,7 +42,7 @@
                     "slots": [
                         {
                             "name": "allergen",
-                            "type": "allergen"
+                            "type": "ALLERGEN"
                         }
                     ],
                     "samples": [
@@ -66,11 +51,24 @@
                         "my allergen is {allergen}",
                         "i am allergic to {allergen}"
                     ]
+                },
+                {
+                    "name": "GreetMeNotIntent",
+                    "slots": [],
+                    "samples": [
+                        "i am feeling sad",
+                        "I am not feeling good",
+                        "Nope",
+                        "Definitely not",
+                        "I am feeling horrible",
+                        "I am feeling terrible",
+                        "No"
+                    ]
                 }
             ],
             "types": [
                 {
-                    "name": "allergen",
+                    "name": "ALLERGEN",
                     "values": [
                         {
                             "name": {
@@ -85,7 +83,6 @@
                             "name": {
                                 "value": "milk products",
                                 "synonyms": [
-                                    "dairy products",
                                     "whole milk",
                                     "diary",
                                     "butter",
