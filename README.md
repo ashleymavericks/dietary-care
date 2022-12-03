@@ -22,24 +22,32 @@ A voice-based chatbot that helps the users in selecting food products taking int
 
 ## API Endpoints
 ```json
-status	200
-message	"Welcome to dietary-care food products API"
-
-endpoint	"/products"
-method	    "GET"
-description	"Displays all products"
-
-endpoint	"/products/allergyCheck"
-method	    "POST"  
-description	"Lets you check if you are allergic to a certain product"
-
-endpoint	"/products/add"
-method	    "POST"
-description	"Lets you add a product to the database"
-	
-endpoint	"/products/recommend"
-method	    "POST"
-description	"Get product recommendation based on query parameters"
+{
+   "status":200,
+   "message":"Welcome to dietary-care food products API",
+   "valid_endpoints":[
+      {
+         "endpoint":"/products",
+         "method":"GET",
+         "description":"Displays all products"
+      },
+      {
+         "endpoint":"/products/allergyCheck",
+         "method":"POST",
+         "description":"Lets you check if you are allergic to a certain product"
+      },
+      {
+         "endpoint":"/products/add",
+         "method":"POST",
+         "description":"Lets you add a product to the database"
+      },
+      {
+         "endpoint":"/products/recommend",
+         "method":"POST",
+         "description":"Get product recommendation based on query parameters"
+      }
+   ]
+}
 ```
 
 ## Contributing
