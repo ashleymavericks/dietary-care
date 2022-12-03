@@ -6,6 +6,20 @@
 A voice-based chatbot that helps the users in selecting food products taking into account their food allergies, supports fallback intents for continuous conversation and store user allergens in persistent storage for future sessions.
 </div>
 
+## Application Workflow
+1. Session initiation and fetching of user allergen values from allergenDB
+2. allergenDB update via POST request and invoking the productCheckIntent
+3. Getting isAllergic value from the backend server
+4. Invoking productCheckIntent again to check for another product
+5. Based on the user allergies, advised not to consume the product
+6. Recommendation mail send and session is ended
+![[application_workflow](https://www.figma.com/file/Y1cey4FqV5dnhfwwkMzQ4u/Dietary-Care?node-id=0%3A1&t=Y6TV2HfNedVfbvcx-1)](assets/application_workflow.jpg)
+
+## System Architecture
+![system_architecture](assets/system_architecture.jpg)
+## API Design
+![api_design](assets/api_design.jpg)
+
 ## API Endpoints
 ```json
 status	200
