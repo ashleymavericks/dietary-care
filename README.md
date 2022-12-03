@@ -6,29 +6,30 @@
 A voice-based chatbot that helps the users in selecting food products taking into account their food allergies, supports fallback intents for continuous conversation and store user allergens in persistent storage for future sessions.
 </div>
 
-## System Architecture
-
-## API Design
-
 ## API Endpoints
 ```json
 status	200
 message	"Welcome to dietary-care food products API"
-valid_endpoints	
-0	
+
 endpoint	"/products"
-method	"GET"
+method	    "GET"
 description	"Displays all products"
-1	
+
 endpoint	"/products/allergyCheck"
-method	"POST"
+method	    "POST"  
 description	"Lets you check if you are allergic to a certain product"
-2	
+
 endpoint	"/products/add"
-method	"POST"
+method	    "POST"
 description	"Lets you add a product to the database"
-3	
+	
 endpoint	"/products/recommend"
-method	"POST"
+method	    "POST"
 description	"Get product recommendation based on query parameters"
 ```
+
+## Contributing
+Feel free to reach out, if intetested in taking this project forward.
+
+## License
+This project is licensed under the MIT license

@@ -1,0 +1,4133 @@
+{
+  "_version": "1.2",
+  "project": {
+    "_id": "5ed3e5ada7739e20c2f6b035",
+    "name": "Dietary Care",
+    "creatorID": 5800,
+    "teamID": "bakdQzojJP",
+    "image": "https://s3.amazonaws.com/com.getstoryflow.api.images/1593766945544-unnamed.png",
+    "platformData": {
+      "products": {},
+      "hasChannelIntents": true
+    },
+    "members": [],
+    "devVersion": "5ed3e5ada7739e20c2f6b009",
+    "privacy": "private",
+    "platform": "alexa",
+    "createdAt": "2020-05-31T17:13:17.000Z"
+  },
+  "version": {
+    "_id": "5ed3e5ada7739e20c2f6b009",
+    "projectID": "5ed3e5ada7739e20c2f6b035",
+    "creatorID": 5800,
+    "name": "Dietary Care",
+    "variables": [
+      "access_token",
+      "user_name",
+      "user_email",
+      "usernames",
+      "user_exists",
+      "user_allergen",
+      "products",
+      "message1",
+      "message2",
+      "remove_allergen",
+      "allergyCheckRes",
+      "speak_reply",
+      "product_exists",
+      "isAllergic",
+      "product_category",
+      "allergicTo",
+      "rec_product_name",
+      "rec_brand_name",
+      "rec_product_name1",
+      "message4",
+      "message3",
+      "rec_brand_name1",
+      "recommended_prod"
+    ],
+    "platformData": {
+      "publishing": {
+        "forExport": true,
+        "hasAds": false,
+        "summary": "Dietary Care skill prevents you from consuming products which contains ingredients to which you are allergic.",
+        "invocationName": "dietary care",
+        "locales": [
+          "en-US",
+          "en-IN"
+        ],
+        "category": "HEALTH_AND_FITNESS",
+        "personal": true,
+        "keywords": "Dietary Care, Allergies, Allergens, Dietary, Care, Food Ingredients, Ingredients, Food Allergies, Allergies Prevention, Food Products",
+        "smallIcon": "https://s3.amazonaws.com/com.getstoryflow.api.images/1593766949791-unnamed.png",
+        "largeIcon": "https://s3.amazonaws.com/com.getstoryflow.api.images/1593766945544-unnamed.png",
+        "description": "Dietary Care is a social bot, it helps you to track your daily product consumption by checking if they are safe for you or not. Gone are the days where you have to look at those minute printed ingredients on the product packaging before concluding it safe for your consumption. \nOnce the skill stores your allergies, it makes sure to prompt you each time you inquire about a product by saying the Manufacturer name followed by the product name, whether you can buy or consume this product or not. If you cannot have the product, it will also send an email with other recommended products that are safe to consume, keeping in mind about your allergies.\n\nFeatures:\n- Email with an embedded link of recommended products\n- Can add/update and remove allergens from your allergens list\n- Thousands of products from multiple brands is available to check against\n",
+        "invocations": [
+          "open dietary care",
+          "start dietary care",
+          "launch dietary care"
+        ],
+        "hasPurchase": false,
+        "forChildren": false,
+        "instructions": "Once the initial basic permission (name and email address) will be provided from the companion app. User can invoke the skill and if its the first interaction of the user, he/she can provide the allergens products and later can check for a product name by saying manufacture name followed by the product name to check the allergen list against the ingredients of the product.\n\nFor example:\nAllergens Name: Milk, Nuts, Cocoa, etc.\nProduct Names: Britannia Chocolate Cake, Milky Mist Paneer, etc.\n\nP.S. we are adding a huge no. of products on a daily basis to our backend api.",
+        "privacyPolicy": "https://creator.voiceflow.com/creator/terms?name=Anurag%20Singh&skill=Dietary%20Care&children=false",
+        "termsAndConditions": "https://creator.voiceflow.com/creator/terms?name=Anurag%20Singh&skill=Dietary%20Care&children=false",
+        "updatesDescription": ""
+      },
+      "settings": {
+        "error": {
+          "voice": "Alexa",
+          "content": ""
+        },
+        "repeat": "ALL",
+        "events": null,
+        "session": {
+          "type": "restart"
+        },
+        "permissions": [],
+        "accountLinking": null,
+        "customInterface": false
+      },
+      "slots": [
+        {
+          "key": "531mn3nz3",
+          "name": "allergen",
+          "type": {
+            "value": "Custom"
+          },
+          "color": "#E26D5A",
+          "inputs": [
+            "milk,milk products, lactose intolerant, dairy products",
+            "butter",
+            "nuts",
+            "soy,soy sauce",
+            "eggs",
+            "wheat,wheat flour",
+            "fish",
+            "shellfish",
+            "sesame seeds",
+            "peanuts",
+            "treenuts",
+            "hazelnuts",
+            "cocoa"
+          ]
+        },
+        {
+          "key": "xa5u13nju",
+          "name": "brand_name",
+          "type": {
+            "value": "Custom"
+          },
+          "color": "#4F9ED1",
+          "inputs": [
+            "britannia,britania",
+            "ferrero",
+            "pillsbury",
+            "milky mist",
+            "mars",
+            "kelloggs,kellogg's",
+            "parle",
+            "goya",
+            "bumble bee",
+            "pacific",
+            "muir glen",
+            "cento",
+            "imagine",
+            "kim chee pride",
+            "santa cruz"
+          ]
+        },
+        {
+          "key": "3j5u93nvd",
+          "name": "product_name",
+          "type": {
+            "value": "Custom"
+          },
+          "color": "#4FA9B3",
+          "inputs": [
+            "chocolate cake",
+            "vanilla cake",
+            "nutella",
+            "pineapple cake,pineapple plunge cake",
+            "chocolate cookie",
+            "snickers bar,snickers",
+            "all bran cereal",
+            "paneer",
+            "organic apple sauce cups",
+            "organic low sodium red kidney beans",
+            "artichoke hearts",
+            "organic tomato sauce",
+            "low sodium chick peas",
+            "organic low sodium cannellini beans",
+            "red kidney beans",
+            "coconut milk",
+            "cannellini beans",
+            "black beans",
+            "parle g,parle g biscuit",
+            "all bran wheat flakes,wheat flakes",
+            "milk choco spread",
+            "chocolate cookie"
+          ]
+        }
+      ],
+      "intents": [
+        {
+          "key": "80mx3nxd",
+          "name": "greeting_intent",
+          "slots": [],
+          "inputs": [
+            {
+              "text": "I am feeling awesome",
+              "slots": []
+            },
+            {
+              "text": "feeling awesome",
+              "slots": []
+            },
+            {
+              "text": "awesome",
+              "slots": []
+            },
+            {
+              "text": "i am feeling great today",
+              "slots": []
+            },
+            {
+              "text": "i am feeling fine today",
+              "slots": []
+            },
+            {
+              "text": "i am feeling good today",
+              "slots": []
+            },
+            {
+              "text": "great",
+              "slots": []
+            },
+            {
+              "text": "fine",
+              "slots": []
+            },
+            {
+              "text": "i am great",
+              "slots": []
+            },
+            {
+              "text": "i am doing fine",
+              "slots": []
+            },
+            {
+              "text": "good",
+              "slots": []
+            },
+            {
+              "text": "i am doing great",
+              "slots": []
+            },
+            {
+              "text": "i am feeling good",
+              "slots": []
+            },
+            {
+              "text": "i am feeling great",
+              "slots": []
+            },
+            {
+              "text": "i am feeling fine",
+              "slots": []
+            },
+            {
+              "text": "i am doing okay",
+              "slots": []
+            }
+          ],
+          "_platform": "alexa"
+        },
+        {
+          "key": "gvqe3ntg",
+          "name": "not_greeting_intent",
+          "slots": [],
+          "inputs": [
+            {
+              "text": "I am sad today",
+              "slots": []
+            },
+            {
+              "text": "sad",
+              "slots": []
+            },
+            {
+              "text": "not good",
+              "slots": []
+            },
+            {
+              "text": "bad",
+              "slots": []
+            },
+            {
+              "text": "I am not feeling very good today",
+              "slots": []
+            },
+            {
+              "text": "I am not feeling very happy today",
+              "slots": []
+            },
+            {
+              "text": "I am feeling sad today",
+              "slots": []
+            },
+            {
+              "text": "I am feeling low today",
+              "slots": []
+            },
+            {
+              "text": "I am feeling low",
+              "slots": []
+            },
+            {
+              "text": "I am feeling terrible",
+              "slots": []
+            },
+            {
+              "text": "I am feeling horrible",
+              "slots": []
+            },
+            {
+              "text": "I am not feeling good",
+              "slots": []
+            },
+            {
+              "text": "I am feeling sad",
+              "slots": []
+            }
+          ],
+          "_platform": "alexa"
+        },
+        {
+          "key": "yl1m73ndb",
+          "name": "allergen_intent",
+          "slots": [
+            {
+              "id": "531mn3nz3",
+              "dialog": {
+                "prompt": [
+                  {
+                    "text": "Kindly tell me about the allergen you want to add to the list. You can say for example, milk.",
+                    "slots": []
+                  }
+                ],
+                "utterances": [
+                  {
+                    "text": "I am allergic to {{[allergen].531mn3nz3}}",
+                    "slots": [
+                      "531mn3nz3"
+                    ]
+                  },
+                  {
+                    "text": "{{[allergen].531mn3nz3}}",
+                    "slots": [
+                      "531mn3nz3"
+                    ]
+                  }
+                ],
+                "confirm": [
+                  {
+                    "text": "I heard {{[allergen].531mn3nz3}} , is it what you said?",
+                    "slots": [
+                      "531mn3nz3"
+                    ]
+                  }
+                ],
+                "confirmEnabled": false
+              },
+              "required": true
+            }
+          ],
+          "inputs": [
+            {
+              "text": "add {{[allergen].531mn3nz3}}  to the list",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "please add {{[allergen].531mn3nz3}} ",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "add {{[allergen].531mn3nz3}} ",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "yes {{[allergen].531mn3nz3}} please",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "Yes I would like to add {{[allergen].531mn3nz3}}",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "I would like to add {{[allergen].531mn3nz3}} ",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "I cannot have products that contains {{[allergen].531mn3nz3}}",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "I cannot have products conatining {{[allergen].531mn3nz3}}",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "I can't have products with {{[allergen].531mn3nz3}} in it",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "I am {{[allergen].531mn3nz3}} ",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "okay so i am allergic to {{[allergen].531mn3nz3}}",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "why not",
+              "slots": []
+            },
+            {
+              "text": "sure thing",
+              "slots": []
+            },
+            {
+              "text": "sure",
+              "slots": []
+            },
+            {
+              "text": "I am allergic to {{[allergen].531mn3nz3}} ",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "{{[allergen].531mn3nz3}} ",
+              "slots": [
+                "531mn3nz3"
+              ]
+            }
+          ],
+          "_platform": "alexa"
+        },
+        {
+          "key": "dq5yt3n8l",
+          "name": "product_check_intent",
+          "slots": [
+            {
+              "id": "xa5u13nju",
+              "dialog": {
+                "prompt": [
+                  {
+                    "text": "Can you tell me the brand name?",
+                    "slots": []
+                  }
+                ],
+                "utterances": [
+                  {
+                    "text": "I am looking for {{[brand_name].xa5u13nju}}",
+                    "pluginsData": {
+                      "VARIABLES": {
+                        "variables": [
+                          "xa5u13nju",
+                          "3j5u93nvd"
+                        ]
+                      }
+                    },
+                    "slots": [
+                      "xa5u13nju"
+                    ]
+                  },
+                  {
+                    "text": "Brand name is {{[brand_name].xa5u13nju}} ",
+                    "pluginsData": {
+                      "VARIABLES": {
+                        "variables": [
+                          "xa5u13nju",
+                          "3j5u93nvd"
+                        ]
+                      }
+                    },
+                    "slots": [
+                      "xa5u13nju"
+                    ]
+                  },
+                  {
+                    "text": "{{[brand_name].xa5u13nju}} ",
+                    "pluginsData": {
+                      "VARIABLES": {
+                        "variables": [
+                          "xa5u13nju",
+                          "3j5u93nvd"
+                        ]
+                      }
+                    },
+                    "slots": [
+                      "xa5u13nju"
+                    ]
+                  }
+                ],
+                "confirm": [
+                  {
+                    "text": "I heard  {{[brand_name].xa5u13nju}}  as the brand name, is that what you said?",
+                    "slots": [
+                      "xa5u13nju"
+                    ]
+                  }
+                ],
+                "confirmEnabled": true
+              },
+              "required": true
+            },
+            {
+              "id": "3j5u93nvd",
+              "dialog": {
+                "prompt": [
+                  {
+                    "text": "Can you tell me the product name?",
+                    "slots": []
+                  }
+                ],
+                "utterances": [
+                  {
+                    "text": "Product name is {{[product_name].3j5u93nvd}} ",
+                    "pluginsData": {
+                      "VARIABLES": {
+                        "variables": [
+                          "3j5u93nvd"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "text": "{{[product_name].3j5u93nvd}} ",
+                    "pluginsData": {
+                      "VARIABLES": {
+                        "variables": [
+                          "3j5u93nvd"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "text": "I am looking for {{[product_name].3j5u93nvd}} ",
+                    "slots": [
+                      "3j5u93nvd"
+                    ]
+                  }
+                ],
+                "confirm": [
+                  {
+                    "text": "I heard {{[product_name].3j5u93nvd}} as the product name, is that what you said?",
+                    "slots": [
+                      "3j5u93nvd"
+                    ]
+                  }
+                ],
+                "confirmEnabled": true
+              },
+              "required": true
+            }
+          ],
+          "inputs": [
+            {
+              "text": "{{[product_name].3j5u93nvd}}  from {{[brand_name].xa5u13nju}} ",
+              "slots": [
+                "3j5u93nvd",
+                "xa5u13nju"
+              ]
+            },
+            {
+              "text": "I want to know about {{[product_name].3j5u93nvd}} from {{[brand_name].xa5u13nju}} ",
+              "slots": [
+                "3j5u93nvd",
+                "xa5u13nju"
+              ]
+            },
+            {
+              "text": "I am looking for {{[product_name].3j5u93nvd}}  from {{[brand_name].xa5u13nju}}",
+              "slots": [
+                "3j5u93nvd",
+                "xa5u13nju"
+              ]
+            },
+            {
+              "text": "I want to know about {{[brand_name].xa5u13nju}} {{[product_name].3j5u93nvd}}",
+              "slots": [
+                "xa5u13nju",
+                "3j5u93nvd"
+              ]
+            },
+            {
+              "text": "i didn't get that",
+              "slots": []
+            },
+            {
+              "text": "i didn't get it",
+              "slots": []
+            },
+            {
+              "text": "kindly repeat",
+              "slots": []
+            },
+            {
+              "text": "can you repeat that",
+              "slots": []
+            },
+            {
+              "text": "what",
+              "slots": []
+            },
+            {
+              "text": "brand name is {{[brand_name].xa5u13nju}}  and product name is {{[product_name].3j5u93nvd}}",
+              "slots": [
+                "xa5u13nju",
+                "3j5u93nvd"
+              ]
+            },
+            {
+              "text": "I am looking for {{[brand_name].xa5u13nju}} {{[product_name].3j5u93nvd}}",
+              "slots": [
+                "xa5u13nju",
+                "3j5u93nvd"
+              ]
+            },
+            {
+              "text": "{{[brand_name].xa5u13nju}} {{[product_name].3j5u93nvd}}",
+              "slots": [
+                "xa5u13nju",
+                "3j5u93nvd"
+              ]
+            }
+          ],
+          "_platform": "alexa"
+        },
+        {
+          "key": "nz5ox3niq",
+          "name": "remover_allergen_intent",
+          "slots": [
+            {
+              "id": "531mn3nz3",
+              "dialog": {
+                "prompt": [
+                  {
+                    "text": "Kindly tell me about the allergen you want to remove from the list. You can say for example, milk.",
+                    "slots": []
+                  }
+                ],
+                "utterances": [
+                  {
+                    "text": "remove {{[allergen].531mn3nz3}} ",
+                    "slots": [
+                      "531mn3nz3"
+                    ]
+                  },
+                  {
+                    "text": "delete {{[allergen].531mn3nz3}} ",
+                    "slots": [
+                      "531mn3nz3"
+                    ]
+                  },
+                  {
+                    "text": "please remove {{[allergen].531mn3nz3}} ",
+                    "slots": [
+                      "531mn3nz3"
+                    ]
+                  },
+                  {
+                    "text": "kindly remove {{[allergen].531mn3nz3}} ",
+                    "slots": [
+                      "531mn3nz3"
+                    ]
+                  },
+                  {
+                    "text": "I would like to remove {{[allergen].531mn3nz3}} ",
+                    "slots": [
+                      "531mn3nz3"
+                    ]
+                  },
+                  {
+                    "text": "I want to remove {{[allergen].531mn3nz3}} ",
+                    "slots": [
+                      "531mn3nz3"
+                    ]
+                  },
+                  {
+                    "text": "{{[allergen].531mn3nz3}} ",
+                    "slots": [
+                      "531mn3nz3"
+                    ]
+                  }
+                ],
+                "confirm": [
+                  {
+                    "text": "Did you say {{[allergen].531mn3nz3}} ? Should I remove it.",
+                    "slots": [
+                      "531mn3nz3"
+                    ]
+                  }
+                ],
+                "confirmEnabled": true
+              },
+              "required": true
+            }
+          ],
+          "inputs": [
+            {
+              "text": "I want to delete {{[allergen].531mn3nz3}} ",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "I want to remove {{[allergen].531mn3nz3}} ",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "I would like to remove {{[allergen].531mn3nz3}}  from the  list",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "remove {{[allergen].531mn3nz3}} from the list",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "remove {{[allergen].531mn3nz3}}",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "delete {{[allergen].531mn3nz3}} ",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "please remove {{[allergen].531mn3nz3}} ",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "kindly remove {{[allergen].531mn3nz3}} ",
+              "slots": [
+                "531mn3nz3"
+              ]
+            },
+            {
+              "text": "I would like to remove {{[allergen].531mn3nz3}} ",
+              "slots": [
+                "531mn3nz3"
+              ]
+            }
+          ],
+          "_platform": "alexa"
+        },
+        {
+          "key": "AMAZON.CancelIntent",
+          "name": "AMAZON.CancelIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.FallbackIntent",
+          "name": "AMAZON.FallbackIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.HelpIntent",
+          "name": "AMAZON.HelpIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.LoopOffIntent",
+          "name": "AMAZON.LoopOffIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.LoopOnIntent",
+          "name": "AMAZON.LoopOnIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.MoreIntent",
+          "name": "AMAZON.MoreIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.NextIntent",
+          "name": "AMAZON.NextIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.NoIntent",
+          "name": "AMAZON.NoIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.YesIntent",
+          "name": "AMAZON.YesIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.StopIntent",
+          "name": "AMAZON.StopIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.ResumeIntent",
+          "name": "AMAZON.ResumeIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.RepeatIntent",
+          "name": "AMAZON.RepeatIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.PreviousIntent",
+          "name": "AMAZON.PreviousIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.PauseIntent",
+          "name": "AMAZON.PauseIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.StartOverIntent",
+          "name": "AMAZON.StartOverIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.ShuffleOnIntent",
+          "name": "AMAZON.ShuffleOnIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.ShuffleOffIntent",
+          "name": "AMAZON.ShuffleOffIntent",
+          "slots": [],
+          "inputs": []
+        },
+        {
+          "key": "AMAZON.SelectIntent",
+          "name": "AMAZON.SelectIntent",
+          "slots": [],
+          "inputs": []
+        }
+      ],
+      "status": {
+        "stage": "DEV"
+      }
+    },
+    "rootDiagramID": "5ed3e5ada7739e20c2f6b015",
+    "secondaryVersionID": 452114,
+    "autoSaveFromRestore": false,
+    "manualSave": false,
+    "_version": 3.92,
+    "components": [
+      {
+        "sourceID": "5ed3e5ada7739e20c2f6b014",
+        "type": "DIAGRAM"
+      },
+      {
+        "sourceID": "5ed3e5ada7739e20c2f6b016",
+        "type": "DIAGRAM"
+      }
+    ],
+    "domains": [
+      {
+        "id": "cl7n5028p0bww08li3sxt2m6a",
+        "name": "Home",
+        "live": true,
+        "topicIDs": [
+          "5ed3e5ada7739e20c2f6b015"
+        ],
+        "rootDiagramID": "5ed3e5ada7739e20c2f6b015"
+      }
+    ],
+    "folders": {},
+    "topics": [
+      {
+        "sourceID": "5ed3e5ada7739e20c2f6b015",
+        "type": "DIAGRAM"
+      }
+    ],
+    "prototype": {
+      "data": {
+        "name": "Dietary Care",
+        "locales": [
+          "en-US",
+          "en-US"
+        ]
+      },
+      "model": {
+        "intents": [
+          {
+            "key": "80mx3nxd",
+            "name": "greeting_intent",
+            "slots": [],
+            "inputs": [
+              {
+                "text": "I am feeling awesome",
+                "slots": []
+              },
+              {
+                "text": "feeling awesome",
+                "slots": []
+              },
+              {
+                "text": "awesome",
+                "slots": []
+              },
+              {
+                "text": "i am feeling great today",
+                "slots": []
+              },
+              {
+                "text": "i am feeling fine today",
+                "slots": []
+              },
+              {
+                "text": "i am feeling good today",
+                "slots": []
+              },
+              {
+                "text": "great",
+                "slots": []
+              },
+              {
+                "text": "fine",
+                "slots": []
+              },
+              {
+                "text": "i am great",
+                "slots": []
+              },
+              {
+                "text": "i am doing fine",
+                "slots": []
+              },
+              {
+                "text": "good",
+                "slots": []
+              },
+              {
+                "text": "i am doing great",
+                "slots": []
+              },
+              {
+                "text": "i am feeling good",
+                "slots": []
+              },
+              {
+                "text": "i am feeling great",
+                "slots": []
+              },
+              {
+                "text": "i am feeling fine",
+                "slots": []
+              },
+              {
+                "text": "i am doing okay",
+                "slots": []
+              }
+            ],
+            "_platform": "alexa"
+          },
+          {
+            "key": "gvqe3ntg",
+            "name": "not_greeting_intent",
+            "slots": [],
+            "inputs": [
+              {
+                "text": "I am sad today",
+                "slots": []
+              },
+              {
+                "text": "sad",
+                "slots": []
+              },
+              {
+                "text": "not good",
+                "slots": []
+              },
+              {
+                "text": "bad",
+                "slots": []
+              },
+              {
+                "text": "I am not feeling very good today",
+                "slots": []
+              },
+              {
+                "text": "I am not feeling very happy today",
+                "slots": []
+              },
+              {
+                "text": "I am feeling sad today",
+                "slots": []
+              },
+              {
+                "text": "I am feeling low today",
+                "slots": []
+              },
+              {
+                "text": "I am feeling low",
+                "slots": []
+              },
+              {
+                "text": "I am feeling terrible",
+                "slots": []
+              },
+              {
+                "text": "I am feeling horrible",
+                "slots": []
+              },
+              {
+                "text": "I am not feeling good",
+                "slots": []
+              },
+              {
+                "text": "I am feeling sad",
+                "slots": []
+              }
+            ],
+            "_platform": "alexa"
+          },
+          {
+            "key": "yl1m73ndb",
+            "name": "allergen_intent",
+            "slots": [
+              {
+                "id": "531mn3nz3",
+                "required": true,
+                "dialog": {
+                  "prompt": [
+                    {
+                      "text": "Kindly tell me about the allergen you want to add to the list. You can say for example, milk.",
+                      "slots": []
+                    }
+                  ],
+                  "utterances": [
+                    {
+                      "text": "I am allergic to {{[allergen].531mn3nz3}}",
+                      "slots": [
+                        "531mn3nz3"
+                      ]
+                    },
+                    {
+                      "text": "{{[allergen].531mn3nz3}}",
+                      "slots": [
+                        "531mn3nz3"
+                      ]
+                    }
+                  ],
+                  "confirm": [
+                    {
+                      "text": "I heard {{[allergen].531mn3nz3}} , is it what you said?",
+                      "slots": [
+                        "531mn3nz3"
+                      ]
+                    }
+                  ],
+                  "confirmEnabled": false
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "text": "add {{[allergen].531mn3nz3}}  to the list",
+                "slots": [
+                  "531mn3nz3"
+                ]
+              },
+              {
+                "text": "please add {{[allergen].531mn3nz3}}",
+                "slots": [
+                  "531mn3nz3"
+                ]
+              },
+              {
+                "text": "add {{[allergen].531mn3nz3}}",
+                "slots": [
+                  "531mn3nz3"
+                ]
+              },
+              {
+                "text": "yes {{[allergen].531mn3nz3}} please",
+                "slots": [
+                  "531mn3nz3"
+                ]
+              },
+              {
+                "text": "Yes I would like to add {{[allergen].531mn3nz3}}",
+                "slots": [
+                  "531mn3nz3"
+                ]
+              },
+              {
+                "text": "I would like to add {{[allergen].531mn3nz3}}",
+                "slots": [
+                  "531mn3nz3"
+                ]
+              },
+              {
+                "text": "I cannot have products that contains {{[allergen].531mn3nz3}}",
+                "slots": [
+                  "531mn3nz3"
+                ]
+              },
+              {
+                "text": "I cannot have products conatining {{[allergen].531mn3nz3}}",
+                "slots": [
+                  "531mn3nz3"
+                ]
+              },
+              {
+                "text": "I can't have products with {{[allergen].531mn3nz3}} in it",
+                "slots": [
+                  "531mn3nz3"
+                ]
+              },
+              {
+                "text": "I am {{[allergen].531mn3nz3}}",
+                "slots": [
+                  "531mn3nz3"
+                ]
+              },
+              {
+                "text": "okay so i am allergic to {{[allergen].531mn3nz3}}",
+                "slots": [
+                  "531mn3nz3"
+                ]
+              },
+              {
+                "text": "why not",
+                "slots": []
+              },
+              {
+                "text": "sure thing",
+                "slots": []
+              },
+              {
+                "text": "sure",
+                "slots": []
+              },
+              {
+                "text": "I am allergic to {{[allergen].531mn3nz3}}",
+                "slots": [
+                  "531mn3nz3"
+                ]
+              },
+              {
+                "text": "{{[allergen].531mn3nz3}}",
+                "slots": [
+                  "531mn3nz3"
+                ]
+              }
+            ],
+            "_platform": "alexa"
+          },
+          {
+            "key": "dq5yt3n8l",
+            "name": "product_check_intent",
+            "slots": [
+              {
+                "id": "xa5u13nju",
+                "required": true,
+                "dialog": {
+                  "prompt": [
+                    {
+                      "text": "Can you tell me the brand name?",
+                      "slots": []
+                    }
+                  ],
+                  "utterances": [
+                    {
+                      "text": "I am looking for {{[brand_name].xa5u13nju}}",
+                      "pluginsData": {
+                        "VARIABLES": {
+                          "variables": [
+                            "xa5u13nju",
+                            "3j5u93nvd"
+                          ]
+                        }
+                      },
+                      "slots": [
+                        "xa5u13nju"
+                      ]
+                    },
+                    {
+                      "text": "Brand name is {{[brand_name].xa5u13nju}}",
+                      "pluginsData": {
+                        "VARIABLES": {
+                          "variables": [
+                            "xa5u13nju",
+                            "3j5u93nvd"
+                          ]
+                        }
+                      },
+                      "slots": [
+                        "xa5u13nju"
+                      ]
+                    },
+                    {
+                      "text": "{{[brand_name].xa5u13nju}}",
+                      "pluginsData": {
+                        "VARIABLES": {
+                          "variables": [
+                            "xa5u13nju",
+                            "3j5u93nvd"
+                          ]
+                        }
+                      },
+                      "slots": [
+                        "xa5u13nju"
+                      ]
+                    }
+                  ],
+                  "confirm": [
+                    {
+                      "text": "I heard  {{[brand_name].xa5u13nju}}  as the brand name, is that what you said?",
+                      "slots": [
+                        "xa5u13nju"
+                      ]
+                    }
+                  ],
+                  "confirmEnabled": true
+                }
+              },
+              {
+                "id": "3j5u93nvd",
+                "required": true,
+                "dialog": {
+                  "prompt": [
+                    {
+                      "text": "Can you tell me the product name?",
+                      "slots": []
+                    }
+                  ],
+                  "utterances": [
+                    {
+                      "text": "Product name is {{[product_name].3j5u93nvd}}",
+                      "pluginsData": {
+                        "VARIABLES": {
+                          "variables": [
+                            "3j5u93nvd"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "text": "{{[product_name].3j5u93nvd}}",
+                      "pluginsData": {
+                        "VARIABLES": {
+                          "variables": [
+                            "3j5u93nvd"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "text": "I am looking for {{[product_name].3j5u93nvd}}",
+                      "slots": [
+                        "3j5u93nvd"
+                      ]
+                    }
+                  ],
+                  "confirm": [
+                    {
+                      "text": "I heard {{[product_name].3j5u93nvd}} as the product name, is that what you said?",
+                      "slots": [
+                        "3j5u93nvd"
+                      ]
+                    }
+                  ],
+                  "confirmEnabled": true
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "text": "{{[product_name].3j5u93nvd}}  from {{[brand_name].xa5u13nju}}",
+                "slots": [
+                  "3j5u93nvd",
+                  "xa5u13nju"
+                ]
+              },
+              {
+                "text": "I want to know about {{[product_name].3j5u93nvd}} from {{[brand_name].xa5u13nju}}",
+                "slots": [
+                  "3j5u93nvd",
+                  "xa5u13nju"
+                ]
+              },
+              {
+                "text": "I am looking for {{[product_name].3j5u93nvd}}  from {{[brand_name].xa5u13nju}}",
+                "slots": [
+                  "3j5u93nvd",
+                  "xa5u13nju"
+                ]
+              },
+              {
+                "text": "I want to know about {{[brand_name].xa5u13nju}} {{[product_name].3j5u93nvd}}",
+                "slots": [
+                  "xa5u13nju",
+                  "3j5u93nvd"
+                ]
+              },
+              {
+                "text": "i didn't get that",
+                "slots": []
+              },
+              {
+                "text": "i didn't get it",
+                "slots": []
+              },
+              {
+                "text": "kindly repeat",
+                "slots": []
+              },
+              {
+                "text": "can you repeat that",
+                "slots": []
+              },
+              {
+                "text": "what",
+                "slots": []
+              },
+              {
+                "text": "brand name is {{[brand_name].xa5u13nju}}  and product name is {{[product_name].3j5u93nvd}}",
+                "slots": [
+                  "xa5u13nju",
+                  "3j5u93nvd"
+                ]
+              },
+              {
+                "text": "I am looking for {{[brand_name].xa5u13nju}} {{[product_name].3j5u93nvd}}",
+                "slots": [
+                  "xa5u13nju",
+                  "3j5u93nvd"
+                ]
+              },
+              {
+                "text": "{{[brand_name].xa5u13nju}} {{[product_name].3j5u93nvd}}",
+                "slots": [
+                  "xa5u13nju",
+                  "3j5u93nvd"
+                ]
+              }
+            ],
+            "_platform": "alexa"
+          },
+          {
+            "key": "AMAZON.HelpIntent",
+            "name": "AMAZON.HelpIntent",
+            "slots": [],
+            "inputs": [
+              {
+                "text": "AMAZON.Help"
+              }
+            ]
+          },
+          {
+            "key": "AMAZON.NoIntent",
+            "name": "AMAZON.NoIntent",
+            "slots": [],
+            "inputs": [
+              {
+                "text": "AMAZON.No"
+              }
+            ]
+          },
+          {
+            "key": "AMAZON.YesIntent",
+            "name": "AMAZON.YesIntent",
+            "slots": [],
+            "inputs": [
+              {
+                "text": "AMAZON.Yes"
+              }
+            ]
+          },
+          {
+            "key": "AMAZON.StopIntent",
+            "name": "AMAZON.StopIntent",
+            "slots": [],
+            "inputs": [
+              {
+                "text": "AMAZON.Stop"
+              }
+            ]
+          }
+        ],
+        "slots": [
+          {
+            "key": "531mn3nz3",
+            "name": "allergen",
+            "type": {
+              "value": "Custom"
+            },
+            "color": "#E26D5A",
+            "inputs": [
+              "milk,milk products,lactose intolerant,dairy products",
+              "butter",
+              "nuts",
+              "soy,soy sauce",
+              "eggs",
+              "wheat,wheat flour",
+              "fish",
+              "shellfish",
+              "sesame seeds",
+              "peanuts",
+              "treenuts",
+              "hazelnuts",
+              "cocoa"
+            ]
+          },
+          {
+            "key": "xa5u13nju",
+            "name": "brand_name",
+            "type": {
+              "value": "Custom"
+            },
+            "color": "#4F9ED1",
+            "inputs": [
+              "britannia,britania",
+              "ferrero",
+              "pillsbury",
+              "milky mist",
+              "mars",
+              "kelloggs,kellogg's",
+              "parle",
+              "goya",
+              "bumble bee",
+              "pacific",
+              "muir glen",
+              "cento",
+              "imagine",
+              "kim chee pride",
+              "santa cruz"
+            ]
+          },
+          {
+            "key": "3j5u93nvd",
+            "name": "product_name",
+            "type": {
+              "value": "Custom"
+            },
+            "color": "#4FA9B3",
+            "inputs": [
+              "chocolate cake",
+              "vanilla cake",
+              "nutella",
+              "pineapple cake,pineapple plunge cake",
+              "chocolate cookie",
+              "snickers bar,snickers",
+              "all bran cereal",
+              "paneer",
+              "organic apple sauce cups",
+              "organic low sodium red kidney beans",
+              "artichoke hearts",
+              "organic tomato sauce",
+              "low sodium chick peas",
+              "organic low sodium cannellini beans",
+              "red kidney beans",
+              "coconut milk",
+              "cannellini beans",
+              "black beans",
+              "parle g,parle g biscuit",
+              "all bran wheat flakes,wheat flakes",
+              "milk choco spread",
+              "chocolate cookie"
+            ]
+          }
+        ]
+      },
+      "context": {
+        "stack": [
+          {
+            "programID": "5ed3e5ada7739e20c2f6b015",
+            "storage": {},
+            "variables": {}
+          }
+        ],
+        "variables": {}
+      },
+      "surveyorContext": {
+        "slotsMap": {
+          "531mn3nz3": {
+            "key": "531mn3nz3",
+            "name": "allergen",
+            "type": {
+              "value": "Custom"
+            },
+            "color": "#E26D5A",
+            "inputs": [
+              "milk,milk products, lactose intolerant, dairy products",
+              "butter",
+              "nuts",
+              "soy,soy sauce",
+              "eggs",
+              "wheat,wheat flour",
+              "fish",
+              "shellfish",
+              "sesame seeds",
+              "peanuts",
+              "treenuts",
+              "hazelnuts",
+              "cocoa"
+            ]
+          },
+          "xa5u13nju": {
+            "key": "xa5u13nju",
+            "name": "brand_name",
+            "type": {
+              "value": "Custom"
+            },
+            "color": "#4F9ED1",
+            "inputs": [
+              "britannia,britania",
+              "ferrero",
+              "pillsbury",
+              "milky mist",
+              "mars",
+              "kelloggs,kellogg's",
+              "parle",
+              "goya",
+              "bumble bee",
+              "pacific",
+              "muir glen",
+              "cento",
+              "imagine",
+              "kim chee pride",
+              "santa cruz"
+            ]
+          },
+          "3j5u93nvd": {
+            "key": "3j5u93nvd",
+            "name": "product_name",
+            "type": {
+              "value": "Custom"
+            },
+            "color": "#4FA9B3",
+            "inputs": [
+              "chocolate cake",
+              "vanilla cake",
+              "nutella",
+              "pineapple cake,pineapple plunge cake",
+              "chocolate cookie",
+              "snickers bar,snickers",
+              "all bran cereal",
+              "paneer",
+              "organic apple sauce cups",
+              "organic low sodium red kidney beans",
+              "artichoke hearts",
+              "organic tomato sauce",
+              "low sodium chick peas",
+              "organic low sodium cannellini beans",
+              "red kidney beans",
+              "coconut milk",
+              "cannellini beans",
+              "black beans",
+              "parle g,parle g biscuit",
+              "all bran wheat flakes,wheat flakes",
+              "milk choco spread",
+              "chocolate cookie"
+            ]
+          }
+        },
+        "extraSlots": [],
+        "extraIntents": [],
+        "usedIntentsSet": [
+          "AMAZON.YesIntent",
+          "AMAZON.NoIntent",
+          "yl1m73ndb",
+          "80mx3nxd",
+          "gvqe3ntg",
+          "AMAZON.StopIntent",
+          "AMAZON.HelpIntent",
+          "dq5yt3n8l"
+        ],
+        "platform": "alexa",
+        "goToIntentsSet": [],
+        "products": {},
+        "interfaces": [],
+        "permissions": [
+          "alexa::profile:name:read",
+          "alexa::profile:email:read"
+        ],
+        "usedCustomBlocks": []
+      },
+      "settings": {
+        "layout": "text-and-dialog",
+        "brandColor": "#3D81E2"
+      },
+      "platform": "alexa"
+    },
+    "templateDiagramID": "638ad18fb76557df5f98d7b1"
+  },
+  "diagrams": {
+    "5ed3e5ada7739e20c2f6b014": {
+      "_id": "5ed3e5ada7739e20c2f6b014",
+      "offsetX": 272,
+      "offsetY": 104,
+      "zoom": 80,
+      "modified": 1604282414,
+      "nodes": {
+        "5f9f682ea7739e20c2f6b187": {
+          "nodeID": "5f9f682ea7739e20c2f6b187",
+          "type": "start",
+          "coords": [
+            360,
+            120
+          ],
+          "data": {
+            "name": "Start",
+            "color": "#43494E",
+            "steps": [],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b189",
+                  "id": "6314710d2eaa780008e2d95a"
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b188": {
+          "nodeID": "5f9f682ea7739e20c2f6b188",
+          "type": "block",
+          "coords": [
+            760,
+            120
+          ],
+          "data": {
+            "name": "Help Message",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b189",
+              "5f9f682ea7739e20c2f6b18a"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b189": {
+          "nodeID": "5f9f682ea7739e20c2f6b189",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "You said help. Do you want to continue?"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b18a",
+                  "id": "6314710d2eaa780008e2d95b"
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b18a": {
+          "nodeID": "5f9f682ea7739e20c2f6b18a",
+          "type": "interaction",
+          "data": {
+            "name": "Choice",
+            "else": {
+              "type": "path",
+              "randomize": false,
+              "reprompts": []
+            },
+            "choices": [
+              {
+                "intent": "AMAZON.YesIntent",
+                "mappings": []
+              },
+              {
+                "intent": "AMAZON.NoIntent",
+                "mappings": []
+              }
+            ],
+            "reprompt": null,
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "else": {
+                  "type": "else",
+                  "target": null,
+                  "id": "6314710d2eaa780008e2d95c"
+                }
+              },
+              "dynamic": [
+                {
+                  "type": "1",
+                  "target": null,
+                  "id": "6314710d2eaa780008e2d95d"
+                },
+                {
+                  "type": "2",
+                  "target": "5f9f682ea7739e20c2f6b18c",
+                  "id": "6314710d2eaa780008e2d95e"
+                }
+              ]
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b18b": {
+          "nodeID": "5f9f682ea7739e20c2f6b18b",
+          "type": "block",
+          "coords": [
+            1170,
+            260
+          ],
+          "data": {
+            "name": "Exit",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b18c"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b18c": {
+          "nodeID": "5f9f682ea7739e20c2f6b18c",
+          "type": "exit",
+          "data": {
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        }
+      },
+      "children": [],
+      "creatorID": 5800,
+      "variables": [],
+      "name": "Help Flow",
+      "versionID": "5ed3e5ada7739e20c2f6b009",
+      "type": "COMPONENT"
+    },
+    "5ed3e5ada7739e20c2f6b015": {
+      "_id": "5ed3e5ada7739e20c2f6b015",
+      "offsetX": 1531.6707387742963,
+      "offsetY": 97.50108350731642,
+      "zoom": 52.259940726342,
+      "modified": 1637073242,
+      "nodes": {
+        "5f9f682ea7739e20c2f6b1d5": {
+          "nodeID": "5f9f682ea7739e20c2f6b1d5",
+          "type": "block",
+          "coords": [
+            5137.9961013793945,
+            -195.81782913208002
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1d6"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1d6": {
+          "nodeID": "5f9f682ea7739e20c2f6b1d6",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Sure, tell me the brand names followed by the product name."
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b212",
+                  "id": "6193bf79108f3f666bf2d852",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1d7": {
+          "nodeID": "5f9f682ea7739e20c2f6b1d7",
+          "type": "block",
+          "coords": [
+            7000.4961013793945,
+            -653.3178291320801
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1d8"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1d8": {
+          "nodeID": "5f9f682ea7739e20c2f6b1d8",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Thanks for using Dietary Care. Hope to hear from you soon."
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d853",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1d9": {
+          "nodeID": "5f9f682ea7739e20c2f6b1d9",
+          "type": "block",
+          "coords": [
+            6307.1758012031705,
+            -483.38930572032524
+          ],
+          "data": {
+            "name": "Block",
+            "color": "purple",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1da"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1da": {
+          "nodeID": "5f9f682ea7739e20c2f6b1da",
+          "type": "interaction",
+          "data": {
+            "name": "Choice",
+            "choices": [
+              {
+                "intent": "AMAZON.YesIntent",
+                "mappings": []
+              },
+              {
+                "intent": "AMAZON.NoIntent",
+                "mappings": []
+              }
+            ],
+            "else": {
+              "type": "path",
+              "pathName": "No Match",
+              "randomize": false,
+              "reprompts": [
+                {
+                  "voice": "Alexa",
+                  "content": ""
+                }
+              ]
+            },
+            "reprompt": null,
+            "chips": null,
+            "buttons": null,
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "else": {
+                  "type": "else",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d854",
+                  "data": {}
+                }
+              },
+              "dynamic": [
+                {
+                  "type": "1",
+                  "target": "5f9f682ea7739e20c2f6b1d5",
+                  "id": "6193bf79108f3f666bf2d855",
+                  "data": {}
+                },
+                {
+                  "type": "2",
+                  "target": "5f9f682ea7739e20c2f6b1d7",
+                  "id": "6193bf79108f3f666bf2d856",
+                  "data": {}
+                }
+              ]
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1db": {
+          "nodeID": "5f9f682ea7739e20c2f6b1db",
+          "type": "block",
+          "coords": [
+            8454.246101379395,
+            -563.31782913208
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1dc",
+              "5f9f682ea7739e20c2f6b1dd"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1dc": {
+          "nodeID": "5f9f682ea7739e20c2f6b1dc",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Sorry, we don't have any recommended products for you. "
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1dd",
+                  "id": "6193bf79108f3f666bf2d857",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1dd": {
+          "nodeID": "5f9f682ea7739e20c2f6b1dd",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Would you like to check for another product?"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1da",
+                  "id": "6193bf79108f3f666bf2d858",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1de": {
+          "nodeID": "5f9f682ea7739e20c2f6b1de",
+          "type": "block",
+          "coords": [
+            7895.4961013793945,
+            -490.81782913208
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1df"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1df": {
+          "nodeID": "5f9f682ea7739e20c2f6b1df",
+          "type": "ifV2",
+          "data": {
+            "expressions": [
+              {
+                "type": null,
+                "value": [
+                  {
+                    "id": "ckw26ura7001y2a6koobekxel",
+                    "logicInterface": "expression",
+                    "type": "advance",
+                    "value": "{{[message1].message1}} and {{[message2].message2}} == 0"
+                  }
+                ]
+              }
+            ],
+            "noMatch": {
+              "type": "path",
+              "pathName": "No Match"
+            },
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "else": {
+                  "type": "else",
+                  "target": "5f9f682ea7739e20c2f6b221",
+                  "id": "6193bf79108f3f666bf2d859",
+                  "data": {}
+                }
+              },
+              "dynamic": [
+                {
+                  "type": "1",
+                  "target": "5f9f682ea7739e20c2f6b1db",
+                  "id": "6193bf79108f3f666bf2d85a",
+                  "data": {}
+                }
+              ]
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1e0": {
+          "nodeID": "5f9f682ea7739e20c2f6b1e0",
+          "type": "block",
+          "coords": [
+            8910.496063232422,
+            -289.0677795410156
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1e1",
+              "5f9f682ea7739e20c2f6b1e2"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1e1": {
+          "nodeID": "5f9f682ea7739e20c2f6b1e1",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Alternative products recommended by us, which you can consume safely have been sent to your mail."
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1e2",
+                  "id": "6193bf79108f3f666bf2d85b",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1e2": {
+          "nodeID": "5f9f682ea7739e20c2f6b1e2",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Would you like to check for another product?"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1d9",
+                  "id": "6193bf79108f3f666bf2d85c",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1e3": {
+          "nodeID": "5f9f682ea7739e20c2f6b1e3",
+          "type": "block",
+          "coords": [
+            7663.622055053711,
+            -165.110279083252
+          ],
+          "data": {
+            "name": "recommendation",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1e4"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1e4": {
+          "nodeID": "5f9f682ea7739e20c2f6b1e4",
+          "type": "api",
+          "data": {
+            "url": "https://dietary-care.herokuapp.com/products/recommend",
+            "body": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "params": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "method": "POST",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "val": "application/json"
+              }
+            ],
+            "content": "{\n    \"query\": {\n        \"category\": {\n            \"$regex\": \"{product_category}\",\n            \"$options\": \"i\"\n        },\n        \"ingredients\": {\n            \"$not\": {\n                \"$regex\": \"{user_allergen}\",\n                \"$options\": \"i\"\n            }\n        },\n        \"allergens\": {\n            \"$not\": {\n                \"$regex\": \"{user_allergen}\",\n                \"$options\": \"i\"\n            }\n        }\n    }\n}",
+            "mappings": [
+              {
+                "path": "response.data.products.0.product_name",
+                "var": "rec_product_name"
+              },
+              {
+                "path": "response.data.products.0.brand_name",
+                "var": "rec_brand_name"
+              },
+              {
+                "path": "response.data.products.0.link",
+                "var": "message2"
+              },
+              {
+                "path": "response.data.products.0.img",
+                "var": "message1"
+              }
+            ],
+            "bodyType": "rawInput",
+            "selectedAction": "Make a POST Request",
+            "selectedIntegration": "Custom API",
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1de",
+                  "id": "6193bf79108f3f666bf2d85d",
+                  "data": {}
+                },
+                "fail": {
+                  "type": "fail",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d85e",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1e5": {
+          "nodeID": "5f9f682ea7739e20c2f6b1e5",
+          "type": "block",
+          "coords": [
+            2940.663070678711,
+            -251.40111541748047
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1e6"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1e6": {
+          "nodeID": "5f9f682ea7739e20c2f6b1e6",
+          "type": "ifV2",
+          "data": {
+            "expressions": [
+              {
+                "type": null,
+                "value": [
+                  {
+                    "id": "ckw26ura800222a6kppy9b56b",
+                    "logicInterface": "expression",
+                    "type": "advance",
+                    "value": "{{[user_allergen].user_allergen}} == 0"
+                  }
+                ]
+              }
+            ],
+            "noMatch": {
+              "type": "path",
+              "pathName": "No Match"
+            },
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "else": {
+                  "type": "else",
+                  "target": "5f9f682ea7739e20c2f6b217",
+                  "id": "6193bf79108f3f666bf2d85f",
+                  "data": {}
+                }
+              },
+              "dynamic": [
+                {
+                  "type": "1",
+                  "target": "5f9f682ea7739e20c2f6b1e9",
+                  "id": "6193bf79108f3f666bf2d860",
+                  "data": {}
+                }
+              ]
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1e7": {
+          "nodeID": "5f9f682ea7739e20c2f6b1e7",
+          "type": "block",
+          "coords": [
+            2498.8709463075147,
+            -219.23680788971672
+          ],
+          "data": {
+            "name": "Block copy",
+            "color": "green",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1e8"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1e8": {
+          "nodeID": "5f9f682ea7739e20c2f6b1e8",
+          "type": "api",
+          "data": {
+            "url": "https://api.airtable.com/v0/appyxb7bAMwEf0hPd/users/{{[user_id].user_id}}",
+            "body": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "params": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "method": "GET",
+            "headers": [
+              {
+                "key": "Authorization",
+                "val": "Bearer keyE4Uwji9jdJqDOe"
+              }
+            ],
+            "content": "",
+            "mappings": [
+              {
+                "path": "response.fields.allergens (from allergendb)",
+                "var": "user_allergen"
+              }
+            ],
+            "bodyType": "formData",
+            "selectedAction": "Make a GET Request",
+            "selectedIntegration": "Custom API",
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1e5",
+                  "id": "6193bf79108f3f666bf2d861",
+                  "data": {
+                    "points": [
+                      {
+                        "point": [
+                          2664.862944555617,
+                          -46.00497532584079
+                        ],
+                        "toTop": false,
+                        "locked": false,
+                        "reversed": false,
+                        "allowedToTop": false
+                      },
+                      {
+                        "point": [
+                          2775.6669605882935,
+                          -224.40445109103823
+                        ],
+                        "toTop": false,
+                        "locked": false,
+                        "reversed": false,
+                        "allowedToTop": false
+                      }
+                    ]
+                  }
+                },
+                "fail": {
+                  "type": "fail",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d862",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1e9": {
+          "nodeID": "5f9f682ea7739e20c2f6b1e9",
+          "type": "block",
+          "coords": [
+            2989.4131088256836,
+            22.09886932373047
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1ea"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1ea": {
+          "nodeID": "5f9f682ea7739e20c2f6b1ea",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Can I know what you are allergic to?"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1ed",
+                  "id": "6193bf79108f3f666bf2d863",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1eb": {
+          "nodeID": "5f9f682ea7739e20c2f6b1eb",
+          "type": "block",
+          "coords": [
+            4161.211605834961,
+            136.0736648559564
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1ec"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1ec": {
+          "nodeID": "5f9f682ea7739e20c2f6b1ec",
+          "type": "interaction",
+          "data": {
+            "name": "Choice",
+            "choices": [
+              {
+                "intent": "AMAZON.YesIntent",
+                "mappings": []
+              },
+              {
+                "intent": "AMAZON.NoIntent",
+                "mappings": []
+              }
+            ],
+            "else": {
+              "type": "path",
+              "pathName": "No Match",
+              "randomize": false,
+              "reprompts": []
+            },
+            "reprompt": null,
+            "chips": null,
+            "buttons": null,
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "else": {
+                  "type": "else",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d864",
+                  "data": {}
+                }
+              },
+              "dynamic": [
+                {
+                  "type": "1",
+                  "target": "5f9f682ea7739e20c2f6b1e9",
+                  "id": "6193bf79108f3f666bf2d865",
+                  "data": {}
+                },
+                {
+                  "type": "2",
+                  "target": "5f9f682ea7739e20c2f6b210",
+                  "id": "6193bf79108f3f666bf2d866",
+                  "data": {}
+                }
+              ]
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1ed": {
+          "nodeID": "5f9f682ea7739e20c2f6b1ed",
+          "type": "block",
+          "coords": [
+            2865.644073486328,
+            310.8968963623047
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1ee"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1ee": {
+          "nodeID": "5f9f682ea7739e20c2f6b1ee",
+          "type": "interaction",
+          "data": {
+            "name": "Choice",
+            "choices": [
+              {
+                "intent": "yl1m73ndb",
+                "mappings": []
+              }
+            ],
+            "else": {
+              "type": "path",
+              "pathName": "No Match",
+              "randomize": false,
+              "reprompts": []
+            },
+            "reprompt": null,
+            "chips": null,
+            "buttons": null,
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "else": {
+                  "type": "else",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d867",
+                  "data": {}
+                }
+              },
+              "dynamic": [
+                {
+                  "type": "1",
+                  "target": "5f9f682ea7739e20c2f6b20d",
+                  "id": "6193bf79108f3f666bf2d868",
+                  "data": {}
+                }
+              ]
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1ef": {
+          "nodeID": "5f9f682ea7739e20c2f6b1ef",
+          "type": "block",
+          "coords": [
+            706.7510894202147,
+            87.14244076860177
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1f0"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1f0": {
+          "nodeID": "5f9f682ea7739e20c2f6b1f0",
+          "type": "ifV2",
+          "data": {
+            "expressions": [
+              {
+                "type": null,
+                "value": [
+                  {
+                    "id": "ckw26ura9002b2a6k0uutabr8",
+                    "logicInterface": "expression",
+                    "type": "advance",
+                    "value": "{{[user_exists].user_exists}} == 1"
+                  }
+                ]
+              }
+            ],
+            "noMatch": {
+              "type": "path",
+              "pathName": "No Match"
+            },
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "else": {
+                  "type": "else",
+                  "target": "5f9f682ea7739e20c2f6b207",
+                  "id": "6193bf79108f3f666bf2d869",
+                  "data": {}
+                }
+              },
+              "dynamic": [
+                {
+                  "type": "1",
+                  "target": "5f9f682ea7739e20c2f6b205",
+                  "id": "6193bf79108f3f666bf2d86a",
+                  "data": {}
+                }
+              ]
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1f1": {
+          "nodeID": "5f9f682ea7739e20c2f6b1f1",
+          "type": "block",
+          "coords": [
+            1724.9755974703053,
+            5.9201535956804605
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1f2"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1f2": {
+          "nodeID": "5f9f682ea7739e20c2f6b1f2",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Please tell me how are you feeling today?"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1f8",
+                  "id": "6193bf79108f3f666bf2d86b",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1f3": {
+          "nodeID": "5f9f682ea7739e20c2f6b1f3",
+          "type": "block",
+          "coords": [
+            2076.5321513815124,
+            158.90641152379857
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1f4"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1f4": {
+          "nodeID": "5f9f682ea7739e20c2f6b1f4",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "<prosody volume=\"x-loud\">Glad to hear that.</prosody> <break time=\"300ms\" />"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1e7",
+                  "id": "6193bf79108f3f666bf2d86c",
+                  "data": {
+                    "points": [
+                      {
+                        "point": [
+                          2242.52684319425,
+                          238.66870199681964
+                        ],
+                        "toTop": false,
+                        "locked": false,
+                        "reversed": false,
+                        "allowedToTop": false
+                      },
+                      {
+                        "point": [
+                          2333.8897878627963,
+                          -192.23943558372838
+                        ],
+                        "toTop": false,
+                        "locked": false,
+                        "reversed": false,
+                        "allowedToTop": false
+                      }
+                    ]
+                  }
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1f5": {
+          "nodeID": "5f9f682ea7739e20c2f6b1f5",
+          "type": "block",
+          "coords": [
+            2399.7139695633286,
+            460.3155138769815
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1f6"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1f6": {
+          "nodeID": "5f9f682ea7739e20c2f6b1f6",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "I am sorry to hear that.<break time=\"600ms\" /> Though I can help you in selecting safer food products.  <break time=\"300ms\" />"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1e8",
+                  "id": "6193bf79108f3f666bf2d86d",
+                  "data": {
+                    "points": [
+                      {
+                        "point": [
+                          2565.7111857314694,
+                          562.5555668042178
+                        ],
+                        "toTop": false,
+                        "locked": false,
+                        "reversed": false,
+                        "allowedToTop": false
+                      },
+                      {
+                        "point": [
+                          2332.860546676274,
+                          -139.7315651577875
+                        ],
+                        "toTop": false,
+                        "locked": false,
+                        "reversed": false,
+                        "allowedToTop": false
+                      }
+                    ]
+                  }
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1f7": {
+          "nodeID": "5f9f682ea7739e20c2f6b1f7",
+          "type": "block",
+          "coords": [
+            1738.1441258275236,
+            354.89690541112077
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1f8"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1f8": {
+          "nodeID": "5f9f682ea7739e20c2f6b1f8",
+          "type": "interaction",
+          "data": {
+            "name": "Choice",
+            "choices": [
+              {
+                "intent": "80mx3nxd",
+                "mappings": []
+              },
+              {
+                "intent": "gvqe3ntg",
+                "mappings": []
+              }
+            ],
+            "else": {
+              "type": "path",
+              "pathName": "No Match",
+              "randomize": false,
+              "reprompts": []
+            },
+            "reprompt": null,
+            "chips": null,
+            "buttons": null,
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "else": {
+                  "type": "else",
+                  "target": "5f9f682ea7739e20c2f6b1f2",
+                  "id": "6193bf79108f3f666bf2d86e",
+                  "data": {}
+                }
+              },
+              "dynamic": [
+                {
+                  "type": "1",
+                  "target": "5f9f682ea7739e20c2f6b1f4",
+                  "id": "6193bf79108f3f666bf2d86f",
+                  "data": {
+                    "points": [
+                      {
+                        "point": [
+                          1904.1463358057395,
+                          434.6372644437964
+                        ],
+                        "toTop": false,
+                        "locked": false,
+                        "reversed": false,
+                        "allowedToTop": false
+                      },
+                      {
+                        "point": [
+                          1910.5486417937843,
+                          238.41021218556443
+                        ],
+                        "toTop": false,
+                        "locked": false,
+                        "reversed": false,
+                        "allowedToTop": false
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "2",
+                  "target": "5f9f682ea7739e20c2f6b1f5",
+                  "id": "6193bf79108f3f666bf2d870",
+                  "data": {}
+                }
+              ]
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1f9": {
+          "nodeID": "5f9f682ea7739e20c2f6b1f9",
+          "type": "block",
+          "coords": [
+            -18.295799060785484,
+            342.33708438339175
+          ],
+          "data": {
+            "name": "Block",
+            "color": "red",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1fa"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1fa": {
+          "nodeID": "5f9f682ea7739e20c2f6b1fa",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Please provide the required permissions from Alexa Companion App"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d871",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1fb": {
+          "nodeID": "5f9f682ea7739e20c2f6b1fb",
+          "type": "block",
+          "coords": [
+            -232.0195470150076,
+            -0.721274745746797
+          ],
+          "data": {
+            "name": "Block",
+            "color": "blue",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1fc"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b1fc": {
+          "nodeID": "5f9f682ea7739e20c2f6b1fc",
+          "type": "user_info",
+          "data": {
+            "infos": [
+              {
+                "type": "alexa::profile:name:read",
+                "mapTo": "user_name",
+                "product": null
+              },
+              {
+                "type": "alexa::profile:email:read",
+                "mapTo": "user_email",
+                "product": null
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d872",
+                  "data": {}
+                },
+                "fail": {
+                  "type": "fail",
+                  "target": "5f9f682ea7739e20c2f6b1fa",
+                  "id": "6193bf79108f3f666bf2d873",
+                  "data": {
+                    "points": [
+                      {
+                        "point": [
+                          -67.0256296879066,
+                          190.02672941262963
+                        ]
+                      },
+                      {
+                        "point": [
+                          -184.3001246170571,
+                          421.84858319793193
+                        ]
+                      }
+                    ]
+                  }
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1fd": {
+          "nodeID": "5f9f682ea7739e20c2f6b1fd",
+          "type": "start",
+          "coords": [
+            -1214.5884234678701,
+            128.12364561585446
+          ],
+          "data": {
+            "name": "Start",
+            "color": "#43494E",
+            "steps": [
+              "5f9f682ea7739e20c2f6b1fe",
+              "5f9f682ea7739e20c2f6b1ff"
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b20a",
+                  "id": "6193bf79108f3f666bf2d874",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1fe": {
+          "nodeID": "5f9f682ea7739e20c2f6b1fe",
+          "type": "command",
+          "data": {
+            "name": "Stop",
+            "next": null,
+            "intent": "AMAZON.StopIntent",
+            "mappings": [],
+            "diagramID": "5ed3e5ada7739e20c2f6b016",
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b1ff": {
+          "nodeID": "5f9f682ea7739e20c2f6b1ff",
+          "type": "command",
+          "data": {
+            "name": "Help",
+            "next": null,
+            "intent": "AMAZON.HelpIntent",
+            "mappings": [],
+            "diagramID": "5ed3e5ada7739e20c2f6b014",
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b200": {
+          "nodeID": "5f9f682ea7739e20c2f6b200",
+          "type": "block",
+          "coords": [
+            3649.1616439819336,
+            243.37366485595703
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b201"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b201": {
+          "nodeID": "5f9f682ea7739e20c2f6b201",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Great, I have added {{[allergen].allergen}} to your list of allergens. "
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b219",
+                  "id": "6193bf79108f3f666bf2d875",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b202": {
+          "nodeID": "5f9f682ea7739e20c2f6b202",
+          "type": "block",
+          "coords": [
+            315.120946307515,
+            207.01319211028328
+          ],
+          "data": {
+            "name": "Block",
+            "color": "green",
+            "steps": [
+              "5f9f682ea7739e20c2f6b203",
+              "5f9f682ea7739e20c2f6b204"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b203": {
+          "nodeID": "5f9f682ea7739e20c2f6b203",
+          "type": "api",
+          "data": {
+            "url": "https://api.airtable.com/v0/appyxb7bAMwEf0hPd/users",
+            "body": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "params": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "method": "GET",
+            "headers": [
+              {
+                "key": "Authorization",
+                "val": "Bearer keyE4Uwji9jdJqDOe"
+              }
+            ],
+            "content": "",
+            "mappings": [
+              {
+                "path": "response.records",
+                "var": "usernames"
+              }
+            ],
+            "bodyType": "formData",
+            "selectedAction": "Make a GET Request",
+            "selectedIntegration": "Custom API",
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b204",
+                  "id": "6193bf79108f3f666bf2d876",
+                  "data": {}
+                },
+                "fail": {
+                  "type": "fail",
+                  "target": "5f9f682ea7739e20c2f6b204",
+                  "id": "6193bf79108f3f666bf2d877",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b204": {
+          "nodeID": "5f9f682ea7739e20c2f6b204",
+          "type": "code",
+          "data": {
+            "code": "var usernames;\nvar user_name;\n\nvar user_exists = 0;\n\nfor (var user of usernames) {\n  if (user.fields.name === user_name) {\n    user_exists = 1;\n    var user_id = user.id\n    break;\n  }\n}",
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1ef",
+                  "id": "6193bf79108f3f666bf2d878",
+                  "data": {}
+                },
+                "fail": {
+                  "type": "fail",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d879",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b205": {
+          "nodeID": "5f9f682ea7739e20c2f6b205",
+          "type": "block",
+          "coords": [
+            1195.4474221572468,
+            97.70863039293096
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b206"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b206": {
+          "nodeID": "5f9f682ea7739e20c2f6b206",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Hello {{[user_name].user_name}}  , Welcome back to Dietary Care. How are you feeling today?"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1f7",
+                  "id": "6193bf79108f3f666bf2d87a",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b207": {
+          "nodeID": "5f9f682ea7739e20c2f6b207",
+          "type": "block",
+          "coords": [
+            1170.7895509586767,
+            370.06551769167856
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b208",
+              "5f9f682ea7739e20c2f6b209"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b208": {
+          "nodeID": "5f9f682ea7739e20c2f6b208",
+          "type": "api",
+          "data": {
+            "url": "https://api.airtable.com/v0/appyxb7bAMwEf0hPd/users",
+            "body": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "params": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "method": "POST",
+            "headers": [
+              {
+                "key": "Authorization",
+                "val": "Bearer keyE4Uwji9jdJqDOe"
+              }
+            ],
+            "content": "{\r\n    \"fields\": {\r\n      \"name\": \"{user_name}\",\r\n      \"allergens\": []\r\n    }\r\n}",
+            "mappings": [
+              {
+                "path": "response.id",
+                "var": "user_id"
+              }
+            ],
+            "bodyType": "rawInput",
+            "selectedAction": "Make a POST Request",
+            "selectedIntegration": "Custom API",
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b209",
+                  "id": "6193bf79108f3f666bf2d87b",
+                  "data": {}
+                },
+                "fail": {
+                  "type": "fail",
+                  "target": "5f9f682ea7739e20c2f6b209",
+                  "id": "6193bf79108f3f666bf2d87c",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b209": {
+          "nodeID": "5f9f682ea7739e20c2f6b209",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Hello {{[user_name].user_name}} , Welcome to your first session of Dietary Care. How are you feeling today?"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1f7",
+                  "id": "6193bf79108f3f666bf2d87d",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b20a": {
+          "nodeID": "5f9f682ea7739e20c2f6b20a",
+          "type": "block",
+          "coords": [
+            -655.8383941650391,
+            192.37358474731445
+          ],
+          "data": {
+            "name": "Block",
+            "color": "blue",
+            "steps": [
+              "5f9f682ea7739e20c2f6b20b"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b20b": {
+          "nodeID": "5f9f682ea7739e20c2f6b20b",
+          "type": "permission",
+          "data": {
+            "permissions": [
+              "alexa::profile:name:read",
+              "alexa::profile:email:read"
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b226",
+                  "id": "6193bf79108f3f666bf2d87e",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b20c": {
+          "nodeID": "5f9f682ea7739e20c2f6b20c",
+          "type": "block",
+          "coords": [
+            3243.144073486328,
+            199.64689636230463
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b20d"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b20d": {
+          "nodeID": "5f9f682ea7739e20c2f6b20d",
+          "type": "api",
+          "data": {
+            "url": "https://api.airtable.com/v0/appyxb7bAMwEf0hPd/allergendb",
+            "body": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "params": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "method": "POST",
+            "headers": [
+              {
+                "key": "Authorization",
+                "val": "Bearer keyE4Uwji9jdJqDOe"
+              }
+            ],
+            "content": " {\r\n      \"fields\": {\r\n        \"allergens\": \"{allergen}\",\r\n        \"users\": [\r\n          \"{user_id}\"\r\n        ]\r\n      }\r\n }",
+            "mappings": [
+              {
+                "path": "",
+                "var": null
+              }
+            ],
+            "bodyType": "rawInput",
+            "selectedAction": "Make a POST Request",
+            "selectedIntegration": "Custom API",
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b200",
+                  "id": "6193bf79108f3f666bf2d87f",
+                  "data": {}
+                },
+                "fail": {
+                  "type": "fail",
+                  "target": "5f9f682ea7739e20c2f6b20f",
+                  "id": "6193bf79108f3f666bf2d880",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b20e": {
+          "nodeID": "5f9f682ea7739e20c2f6b20e",
+          "type": "block",
+          "coords": [
+            3040.644073486328,
+            581.8969192504883
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b20f"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b20f": {
+          "nodeID": "5f9f682ea7739e20c2f6b20f",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Sorry , I was not able to store that. Please try again."
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1ed",
+                  "id": "6193bf79108f3f666bf2d881",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b210": {
+          "nodeID": "5f9f682ea7739e20c2f6b210",
+          "type": "block",
+          "coords": [
+            4553.162875630339,
+            322.09890600545276
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b211"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b211": {
+          "nodeID": "5f9f682ea7739e20c2f6b211",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "If you want to check any product to see if you are allergic to it, then you can start by telling me the brand name followed by the product name."
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b212",
+                  "id": "6193bf79108f3f666bf2d882",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b212": {
+          "nodeID": "5f9f682ea7739e20c2f6b212",
+          "type": "block",
+          "coords": [
+            5010.663070678711,
+            289.3488731384277
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b213"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b213": {
+          "nodeID": "5f9f682ea7739e20c2f6b213",
+          "type": "interaction",
+          "data": {
+            "name": "Choice",
+            "choices": [
+              {
+                "intent": "dq5yt3n8l",
+                "mappings": []
+              }
+            ],
+            "else": {
+              "type": "path",
+              "pathName": "No Match",
+              "randomize": false,
+              "reprompts": []
+            },
+            "reprompt": null,
+            "chips": null,
+            "buttons": null,
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "else": {
+                  "type": "else",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d883",
+                  "data": {}
+                }
+              },
+              "dynamic": [
+                {
+                  "type": "1",
+                  "target": "5f9f682ea7739e20c2f6b215",
+                  "id": "6193bf79108f3f666bf2d884",
+                  "data": {}
+                }
+              ]
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b214": {
+          "nodeID": "5f9f682ea7739e20c2f6b214",
+          "type": "block",
+          "coords": [
+            5438.163070678711,
+            76.84887313842768
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b215",
+              "5f9f682ea7739e20c2f6b216"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b215": {
+          "nodeID": "5f9f682ea7739e20c2f6b215",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Okay, hold on. Let me check<break time=\"1s\" />"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b216",
+                  "id": "6193bf79108f3f666bf2d885",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b216": {
+          "nodeID": "5f9f682ea7739e20c2f6b216",
+          "type": "api",
+          "data": {
+            "url": "https://api.airtable.com/v0/appyxb7bAMwEf0hPd/users?maxRecords=1&view=Grid%20view",
+            "body": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "params": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "method": "GET",
+            "headers": [
+              {
+                "key": "Authorization",
+                "val": "Bearer keyE4Uwji9jdJqDOe"
+              }
+            ],
+            "content": "",
+            "mappings": [
+              {
+                "path": "response.records.0.fields.allergens (from allergendb)",
+                "var": "user_allergen"
+              }
+            ],
+            "bodyType": "formData",
+            "selectedAction": "Make a GET Request",
+            "selectedIntegration": "Custom API",
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b21b",
+                  "id": "6193bf79108f3f666bf2d886",
+                  "data": {}
+                },
+                "fail": {
+                  "type": "fail",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d887",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b217": {
+          "nodeID": "5f9f682ea7739e20c2f6b217",
+          "type": "block",
+          "coords": [
+            3911.004534093347,
+            -223.3633105394319
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b218",
+              "5f9f682ea7739e20c2f6b219"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b218": {
+          "nodeID": "5f9f682ea7739e20c2f6b218",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "You are currently allergic to {{[user_allergen].user_allergen}} ."
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b219",
+                  "id": "6193bf79108f3f666bf2d888",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b219": {
+          "nodeID": "5f9f682ea7739e20c2f6b219",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Would you like to add another allergen to the list?<break time=\"500ms\" />"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1eb",
+                  "id": "6193bf79108f3f666bf2d889",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b21a": {
+          "nodeID": "5f9f682ea7739e20c2f6b21a",
+          "type": "block",
+          "coords": [
+            5870.644073486328,
+            -31.603103637695312
+          ],
+          "data": {
+            "name": "Block copy",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b21b"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b21b": {
+          "nodeID": "5f9f682ea7739e20c2f6b21b",
+          "type": "api",
+          "data": {
+            "url": "https://dietary-care.herokuapp.com/products/allergyCheck",
+            "body": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "params": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "method": "POST",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "val": "application/json"
+              }
+            ],
+            "content": "{\n    \"query\": {\n        \"product_name\": {\n            \"$regex\": \"{product_name}\",\n            \"$options\": \"i\"\n        },\n        \"brand_name\": {\n            \"$regex\": \"{brand_name}\",\n            \"$options\": \"i\"\n        }\n    },\n    \"user_allergens\": \"{user_allergen}\"\n}",
+            "mappings": [
+              {
+                "path": "response",
+                "var": "allergyCheckRes"
+              }
+            ],
+            "bodyType": "rawInput",
+            "selectedAction": "Make a POST Request",
+            "selectedIntegration": "Custom API",
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b21c",
+                  "id": "6193bf79108f3f666bf2d88a",
+                  "data": {}
+                },
+                "fail": {
+                  "type": "fail",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d88b",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b21c": {
+          "nodeID": "5f9f682ea7739e20c2f6b21c",
+          "type": "block",
+          "coords": [
+            6357.576374131805,
+            152.27745982578824
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b21d"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b21d": {
+          "nodeID": "5f9f682ea7739e20c2f6b21d",
+          "type": "code",
+          "data": {
+            "code": "var allergyCheckRes;\n\nvar speak_reply = \"\";\n\nvar product_exists = allergyCheckRes.product_exists;\n\nif(product_exists == 1) {\n  var isAllergic = allergyCheckRes.data.isAllergic;\n  var allergicTo = allergyCheckRes.data.allergicTo;\n  var product_category = allergyCheckRes.data.category;\n\n} else {\n  throw Error;\n}",
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b222",
+                  "id": "6193bf79108f3f666bf2d88c",
+                  "data": {}
+                },
+                "fail": {
+                  "type": "fail",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d88d",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b21e": {
+          "nodeID": "5f9f682ea7739e20c2f6b21e",
+          "type": "block",
+          "coords": [
+            7208.622292499151,
+            27.889704723747457
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b21f"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b21f": {
+          "nodeID": "5f9f682ea7739e20c2f6b21f",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "No, you cannot have  {{[brand_name].brand_name}}  {{[product_name].product_name}} as it contains {{[allergicTo].allergicTo}}, to which you are allergic<break time=\"500ms\" />"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1e3",
+                  "id": "6193bf79108f3f666bf2d88e",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b220": {
+          "nodeID": "5f9f682ea7739e20c2f6b220",
+          "type": "block",
+          "coords": [
+            8357.996063232422,
+            -197.56779098510748
+          ],
+          "data": {
+            "name": "email block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b221"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b221": {
+          "nodeID": "5f9f682ea7739e20c2f6b221",
+          "type": "api",
+          "data": {
+            "url": "https://api.sendgrid.com/v3/mail/send",
+            "body": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "params": [
+              {
+                "key": "",
+                "val": ""
+              }
+            ],
+            "method": "POST",
+            "headers": [
+              {
+                "key": "Authorization",
+                "val": "Bearer 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"
+              },
+              {
+                "key": "Content-Type",
+                "val": "application/json"
+              }
+            ],
+            "content": "{  \n       \"from\":{\"email\":\"ravinderpalsingh06@gmail.com\"},\n       \"personalizations\":[  \n          {  \n             \"to\":[{\"email\":\"{user_email}\",\"name\":\"{user_name}\"}],\n             \"dynamic_template_data\":{\n               \"name\":\"{user_name}\",\n               \"product_img\": \"{message1}\",\n               \"product_brand\": \"{rec_brand_name}\",\n               \"product_name\": \"{rec_product_name}\",  \n               \"product_link\": \"{message2}\"\n             }\n          }\n       ],\n       \"template_id\":\"d-5acf5bcad3be4f8c90a19c1860be8505\"\n}",
+            "mappings": [
+              {
+                "path": "",
+                "var": null
+              }
+            ],
+            "bodyType": "rawInput",
+            "selectedAction": "Make a POST Request",
+            "selectedIntegration": "Custom API",
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1e0",
+                  "id": "6193bf79108f3f666bf2d88f",
+                  "data": {}
+                },
+                "fail": {
+                  "type": "fail",
+                  "target": null,
+                  "id": "6193bf79108f3f666bf2d890",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b222": {
+          "nodeID": "5f9f682ea7739e20c2f6b222",
+          "type": "block",
+          "coords": [
+            6728.0010986328125,
+            -26.35756111145021
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b223"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b223": {
+          "nodeID": "5f9f682ea7739e20c2f6b223",
+          "type": "ifV2",
+          "data": {
+            "expressions": [
+              {
+                "type": null,
+                "value": [
+                  {
+                    "id": "ckw26urab002y2a6ksk457jw1",
+                    "logicInterface": "expression",
+                    "type": "advance",
+                    "value": "{{[isAllergic].isAllergic}} == 1 "
+                  }
+                ]
+              }
+            ],
+            "noMatch": {
+              "type": "path",
+              "pathName": "No Match"
+            },
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "else": {
+                  "type": "else",
+                  "target": "5f9f682ea7739e20c2f6b224",
+                  "id": "6193bf79108f3f666bf2d891",
+                  "data": {}
+                }
+              },
+              "dynamic": [
+                {
+                  "type": "1",
+                  "target": "5f9f682ea7739e20c2f6b21e",
+                  "id": "6193bf79108f3f666bf2d892",
+                  "data": {}
+                }
+              ]
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b224": {
+          "nodeID": "5f9f682ea7739e20c2f6b224",
+          "type": "block",
+          "coords": [
+            7038.0010986328125,
+            329.89243888854975
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b225"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b225": {
+          "nodeID": "5f9f682ea7739e20c2f6b225",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "Yes, you can have  {{[brand_name].brand_name}}  {{[product_name].product_name}}"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b1dd",
+                  "id": "6193bf79108f3f666bf2d893",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b226": {
+          "nodeID": "5f9f682ea7739e20c2f6b226",
+          "type": "block",
+          "coords": [
+            -241.57424926757812,
+            -222.88931274414068
+          ],
+          "data": {
+            "name": "Block",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b227"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b227": {
+          "nodeID": "5f9f682ea7739e20c2f6b227",
+          "type": "setV2",
+          "data": {
+            "sets": [
+              {
+                "type": "advance",
+                "variable": "user_name",
+                "expression": "'Anurag Singh'"
+              },
+              {
+                "type": "advance",
+                "variable": "user_email",
+                "expression": "'singhanurag024@gmail.com'"
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b202",
+                  "id": "6193bf79108f3f666bf2d894",
+                  "data": {}
+                }
+              },
+              "dynamic": []
+            }
+          }
+        }
+      },
+      "children": [
+        "5ed3e5ada7739e20c2f6b016",
+        "5ed3e5ada7739e20c2f6b014"
+      ],
+      "creatorID": 5800,
+      "variables": [],
+      "name": "ROOT",
+      "versionID": "5ed3e5ada7739e20c2f6b009",
+      "intentStepIDs": [],
+      "menuNodeIDs": [
+        "5f9f682ea7739e20c2f6b1fd"
+      ],
+      "type": "TOPIC"
+    },
+    "5ed3e5ada7739e20c2f6b016": {
+      "_id": "5ed3e5ada7739e20c2f6b016",
+      "offsetX": 361.81006617692776,
+      "offsetY": -161.72237149853413,
+      "zoom": 80,
+      "modified": 1604282414,
+      "nodes": {
+        "5f9f682ea7739e20c2f6b3b2": {
+          "nodeID": "5f9f682ea7739e20c2f6b3b2",
+          "type": "start",
+          "coords": [
+            247.73741727884033,
+            452.15296437316766
+          ],
+          "data": {
+            "name": "Start",
+            "color": "#43494E",
+            "steps": [],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b3b4",
+                  "id": "6314710d2eaa780008e2d961"
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b3b3": {
+          "nodeID": "5f9f682ea7739e20c2f6b3b3",
+          "type": "block",
+          "coords": [
+            660,
+            453.54871427430436
+          ],
+          "data": {
+            "name": "Exit",
+            "color": "standard",
+            "steps": [
+              "5f9f682ea7739e20c2f6b3b4",
+              "5f9f682ea7739e20c2f6b3b5"
+            ]
+          }
+        },
+        "5f9f682ea7739e20c2f6b3b4": {
+          "nodeID": "5f9f682ea7739e20c2f6b3b4",
+          "type": "speak",
+          "data": {
+            "randomize": false,
+            "dialogs": [
+              {
+                "voice": "Alexa",
+                "content": "You said stop. This session is now ending."
+              }
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "type": "next",
+                  "target": "5f9f682ea7739e20c2f6b3b5",
+                  "id": "6314710d2eaa780008e2d962"
+                }
+              },
+              "dynamic": []
+            }
+          }
+        },
+        "5f9f682ea7739e20c2f6b3b5": {
+          "nodeID": "5f9f682ea7739e20c2f6b3b5",
+          "type": "exit",
+          "data": {
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        }
+      },
+      "children": [],
+      "creatorID": 5800,
+      "variables": [],
+      "name": "Stop Flow",
+      "versionID": "5ed3e5ada7739e20c2f6b009",
+      "type": "COMPONENT"
+    }
+  },
+  "variableStates": []
+}
