@@ -15,7 +15,7 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "lambda-local": "^1.6.3",
-    "mongoose": "^5.7.9",
+    "mongoose": "^5.13.15",
     "request": "^2.88.2"
   },
   "devDependencies": {
